@@ -1,0 +1,74 @@
+<div class="inbox">
+  <h2>Manage Tags</h2>
+  <div class="row">
+    <div class="col-md-6 compose-right">
+      <div class="inbox-details-default">
+        <div class="inbox-details-heading">
+          Tag Description
+        </div>
+        <div class="inbox-details-body">
+          <div class="alert alert-info">
+            Please fill details to register a tag.
+          </div>
+          <form class="com-mail" #frmTag="ngForm" (ngSubmit)="saveTag()">
+            <p class="form-group">
+              <label for="txtID">Tag ID</label>
+              <input id="txtID" name="txtID" [(ngModel)]="tag.id" [disabled]="true"
+                     class="form-control" placeholder="Auto Generated ID">
+            </p>
+            <p class="form-group">
+              <label for="txtName">Tag Name</label>
+              <input id="txtName" name="txtName" [(ngModel)]="tag.name"
+                     class="form-control" placeholder="Enter tag name here ...">
+            </p>
+            <p class="form-group">
+              <label for="txtRequiredPoints">Tag Description</label>
+              <input id="txtRequiredPoints" name="txtRequiredPoints" [(ngModel)]="tag.description"
+                     class="form-control" placeholder="Enter tag description here ...">
+            </p>
+            <button class="btn btn-primary" type="submit">Save Tag</button>
+            &nbsp;
+            <button class="btn btn-warning" type="button" (click)="clear()">Clear</button>
+          </form>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="work-progres">
+        <div class="chit-chat-heading">
+          All Tags
+        </div>
+        <br>
+        <div class="table-responsive">
+          <table class="table ui red table" style="cursor: pointer">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Tag Name</th>
+              <th>Tag Description</th>
+              <!--<th>Delete Badge</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let selectedTag of allTags | paginate: { itemsPerPage: 10, currentPage: p }"
+                (click)="selectTag(selectedTag)">
+              <td>{{selectedTag.id}}</td>
+              <td>{{selectedTag.name}}</td>
+              <td>{{selectedTag.description}}</td>
+              <!--<td><span class="badge badge-info">50%</span></td>-->
+            </tr>
+            <tr>
+              <td colspan="6">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

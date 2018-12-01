@@ -1,0 +1,11 @@
+@import "~src/assets/admin/css/style.css";
+
+.tblImageColumn{
+  width: 70px;
+  height: 70px;;
+  border-radius: 100%;
+  margin-left: 5%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}

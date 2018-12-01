@@ -1,0 +1,74 @@
+<div class="inbox">
+  <h2>Manage Badges</h2>
+  <div class="row">
+    <div class="col-md-6 compose-right">
+      <div class="inbox-details-default">
+        <div class="inbox-details-heading">
+          Badge Description
+        </div>
+        <div class="inbox-details-body">
+          <div class="alert alert-info">
+            Please fill details to register a badge.
+          </div>
+          <form class="com-mail" #frmBadge="ngForm" (ngSubmit)="saveBadge()">
+            <p class="form-group">
+              <label for="txtID">Badge ID</label>
+              <input id="txtID" name="txtID" [(ngModel)]="badge.id" [disabled]="true"
+                     class="form-control" placeholder="Auto Generated ID">
+            </p>
+            <p class="form-group">
+              <label for="txtName">Badge Name</label>
+              <input id="txtName" name="txtName" [(ngModel)]="badge.name"
+                     class="form-control" placeholder="Enter batch name here ...">
+            </p>
+            <p class="form-group">
+              <label for="txtRequiredPoints">Required Points</label>
+              <input id="txtRequiredPoints" name="txtRequiredPoints" [(ngModel)]="badge.points"
+                     class="form-control" placeholder="Enter required point limit here ...">
+            </p>
+            <button class="btn btn-primary" type="submit">Save Badge</button>
+            &nbsp;
+            <button class="btn btn-warning" type="button" (click)="clear()">Clear</button>
+          </form>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="work-progres">
+        <div class="chit-chat-heading">
+          All Badges
+        </div>
+        <br>
+        <div class="table-responsive">
+          <table class="table ui red table" style="cursor: pointer">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Badge Name</th>
+              <th>Required Points</th>
+              <!--<th>Delete Badge</th>-->
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let selectedBadge of allBadges | paginate: { itemsPerPage: 10, currentPage: p }"
+                (click)="selectBadge(selectedBadge)">
+              <td>{{selectedBadge.id}}</td>
+              <td>{{selectedBadge.name}}</td>
+              <td>{{selectedBadge.points}}</td>
+              <!--<td><span class="badge badge-info">50%</span></td>-->
+            </tr>
+            <tr>
+              <td colspan="6">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

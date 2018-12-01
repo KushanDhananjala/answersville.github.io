@@ -1,0 +1,114 @@
+<div class="inbox">
+  <h2>Reported Questions</h2>
+  <div class="row">
+    <div class="compose-right">
+      <div class="work-progres">
+        <div class="chit-chat-heading">
+          All Reported Questions
+        </div>
+        <br>
+        <div class="table-responsive">
+          <table class="table ui red table">
+            <thead>
+            <tr>
+              <th>Reported User</th>
+              <th>Question</th>
+              <th>Reported Date</th>
+              <th>Reported Reason</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let reportedQuestion of reportedQuestions | paginate: { itemsPerPage: 5, currentPage: p }"
+                (click)="selectReportedQuestion(reportedQuestion)" style="max-height: 30px; cursor: pointer">
+              <td class="text-center">
+                <img class="tblImageColumn" [src]="reportedQuestion.userprofileImageUrl"/>
+                <br>
+                <br>
+                <a class="text-center" style="cursor: pointer">{{reportedQuestion.userName}}</a>
+              </td>
+              <td>
+                <div id="question">
+                  <div id="title">
+                    <h4 class="text-center" *ngIf="!edit">{{reportedQuestion.questionTitle}}</h4>
+                    <p class="form-group" *ngIf="edit">
+                      <label for="txtQuestionTitle" class="required"><h6>Question Title :</h6>
+                      </label>
+                      <input name="txtQuestionTitle" id="txtQuestionTitle" class="the-username form-control"
+                             type="text" value="" [(ngModel)]="reportedQuestion.questionTitle"
+                             placeholder="Type your question title ..." style="width: 100%;color: black">
+                    </p>
+                  </div>
+                  <br>
+                  <div id="body" *ngIf="!edit">
+                    {{reportedQuestion.questionBody}}
+                  </div>
+                  <div class="form-group details-area" *ngIf="edit">
+                    <label for="txtQuestionBody" class="required"><h6>Question Details :</h6>
+                    </label>
+                    <textarea name="txtQuestionBody" id="txtQuestionBody" class="form-control the-textarea"
+                              placeholder="Enter your question details here ..."
+                              [(ngModel)]="reportedQuestion.questionBody"
+                              aria-required="true" cols="100" rows="8" style="width: 100%"></textarea>
+                    <div class="clearfix"></div>
+                  </div>
+                  <br>
+                  <div class="text-center" style="font-weight: bold">
+                    <a href="" (click)="passQuestion(reportedQuestion.questionID)"><< Visit Question >></a>
+                  </div>
+
+                </div>
+              </td>
+              <td>{{reportedQuestion.date}}</td>
+              <td>{{reportedQuestion.reason}}</td>
+              <td>
+                <button class="ui labeled yellow icon button" style="height: 35px;font-size: 14px"
+                        (click)="ignoreQuestion(reportedQuestion.id,reportedQuestion.questionID)" *ngIf="!edit">
+                  <i class="eject icon"></i>
+                  Ignore&nbsp;&nbsp;&nbsp;
+                </button>
+                <br *ngIf="!edit">
+                <br *ngIf="!edit">
+                <button class="ui labeled green icon button" style="height: 35px;font-size: 14px"
+                        (click)="checkEditStatus()" *ngIf="!edit">
+                  <i class="edit icon"></i>
+                  Edit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </button>
+                <br *ngIf="!edit">
+                <br *ngIf="!edit">
+                <button class="ui labeled red icon button" style="height: 35px;font-size: 14px"
+                        (click)="removeQuestion(reportedQuestion.id,reportedQuestion.questionID)" *ngIf="!edit">
+                  <i class="trash alternate icon"></i>
+                  Remove
+                </button>
+                <button class="ui labeled green icon button" style="height: 35px;font-size: 14px"
+                        (click)="editQuestion(reportedQuestion.id,reportedQuestion.questionID,
+                        reportedQuestion.questionTitle,reportedQuestion.questionBody)"
+                        *ngIf="edit">
+                  <i class="check circle icon"></i>
+                  Confirm
+                </button>
+                <br *ngIf="edit">
+                <br *ngIf="edit">
+                <button class="ui labeled red icon button" style="height: 35px;font-size: 14px"
+                        (click)="checkEditStatus()" *ngIf="edit">
+                  <i class="calendar times icon"></i>
+                  Cancel&nbsp;&nbsp;&nbsp;
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="12">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+
+</div>

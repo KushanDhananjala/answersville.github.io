@@ -1,0 +1,82 @@
+<div style="background-color: #e1e3e3">
+  <div class="breadcrumbs">
+    <section class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Public Chat</h1>
+          <div class="clearfix"></div>
+          <div class="crumbs">
+            <a itemprop="breadcrumb" href="https://2code.info/demo/themes/ask-me">Home</a>
+            <span class="crumbs-span">/</span>
+            <span class="current">Public Chat</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class='index-no-box'></div>
+  <div class="section-warp top-after-header big-search">
+    <div class="container clearfix">
+      <div class="box_icon box_warp box_no_border box_no_background">
+        <div class="row">
+          <div class="col-md-12">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="container main-content page-right-sidebar">
+    <div class="row">
+      <div class="with-sidebar-container">
+        <div class="main-sidebar-container col-md-9">
+          <div class="page-content">
+            <div class="boxedtitle page-title">
+              <h2>Public Chat Of Answers Ville</h2>
+            </div>
+
+            <div>
+              <div>
+                <div class="chat-container" style="border: 2px solid #ff7361; height: 500px; width: 100%">
+                  <div class="chat">
+                    <div class="message"></div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="!nameEnterd">
+                <form (ngSubmit)="setName(txtName.value)">
+                  <br>
+                  <div class="ui action input" style="width: 100%; border: 2px solid #ff7361">
+                    <input type="text" class="required-item" name="txtName" id="txtName" #txtName
+                           placeholder="Enter your name before chat ...">
+                    <button class="ui button send" type="submit" style="font-weight: bold">
+                      <i class="save icon"></i>Set Name
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div *ngIf="nameEnterd">
+                <form (ngSubmit)="sendMessage(txtMsg.value)">
+                  <br>
+                  <div class="ui action input" style="width: 100%; border: 2px solid #ff7361">
+                    <input type="text" class="required-item" name="txtMsg" id="txtMsg" #txtMsg
+                           placeholder="Enter the massege you want to ask ...">
+                    <button class="ui button send" type="submit" style="font-weight: bold">
+                      <i class="location arrow icon"></i>Send
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-right-bar-without-profile></app-right-bar-without-profile>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+

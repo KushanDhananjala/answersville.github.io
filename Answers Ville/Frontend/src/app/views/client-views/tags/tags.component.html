@@ -1,0 +1,112 @@
+<div style="background-color: #e1e3e3">
+  <div class="breadcrumbs">
+    <section class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Tags</h1>
+          <div class="clearfix"></div>
+          <div class="crumbs">
+            <a itemprop="breadcrumb" href="https://2code.info/demo/themes/ask-me">Home</a>
+            <span class="crumbs-span">/</span>
+            <span class="current">Tags</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="search-form-breadcrumbs">
+            <div class="row">
+              <div class="col-md-6">
+                <form method="get" class="search-filter-form">
+                                        <span class="styled-select tag-filter">
+                                            <select name="tag_filter" onchange="this.form.submit()">
+                                                <option value="count" selected='selected'>Popular</option>
+                                                <option value="name">Name</option>
+                                            </select>
+                                        </span>
+                </form>
+              </div>
+              <div class="col-md-6">
+                <form method="get" action="https://2code.info/demo/themes/ask-me/search/" class="search-input-form">
+                  <input type="hidden" name="page_id" value="2199">
+                  <input class='live-search breadcrumbs-live-search' autocomplete='off' type="search"
+                         name="search" placeholder="Type to find...">
+                  <button class="button-search">
+                    <i class="icon-search"></i>
+                  </button>
+                  <div class="search-results results-empty"></div>
+                  <input type="hidden" name="search_type" class="search_type" value="question_tags"></form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class='index-no-box'></div>
+  <div class="section-warp top-after-header big-search">
+    <div class="container clearfix">
+      <div class="box_icon box_warp box_no_border box_no_background">
+        <div class="row">
+          <div class="col-md-12">
+            <form class="form-style form-style-2" method="get" action="https://2code.info/demo/themes/ask-me/search/">
+              <div class="search-p">
+                <input class='live-search live-search-big' autocomplete='off' type="text" value="Search here ..."
+                       onfocus="if(this.value=='Search here ...')this.value='';"
+                       onblur="if(this.value=='')this.value='Search here ...';"
+                       name="search">
+                <input type="hidden" name="page_id" value="2199">
+                <input type="hidden" name="search_type" value="questions">
+                <i class="fa fa-search"></i>
+                <button class="ask-search">
+                  <span class="color button small publish-question">Search</span>
+                </button>
+                <div class="search-results results-empty"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="container main-content page-right-sidebar">
+    <div class="row">
+      <div class="with-sidebar-container">
+        <div class="main-sidebar-container col-md-9">
+          <div class="page-content">
+            <div class="boxedtitle page-title">
+              <h2>Tags</h2>
+            </div>
+            <div class="tagcloud row">
+              <div class="col-md-3" *ngFor="let tag of tagList">
+                <div class="tag-sections">
+                  <div class="tag-counter">
+                    <a title="View all questions under {{tag.description}}" style="cursor: pointer">
+                      {{tag.name}}
+                    </a>
+                    <span> x 2</span>
+                  </div>
+                  <div class="tag-section">
+                    <span>{{tag.description}}</span>
+                    <span>0 this week</span>
+                    <span>0 this month</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12"></div>
+            </div>
+            <div class="pagination">
+              <span aria-current='page' class='page-numbers current'>1</span>
+              <a class='page-numbers' style="cursor: pointer">2</a>
+              <a class="next page-numbers" style="cursor: pointer">
+                <i class="fa fa-angle-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <app-right-bar-without-profile></app-right-bar-without-profile>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </section>
+</div>

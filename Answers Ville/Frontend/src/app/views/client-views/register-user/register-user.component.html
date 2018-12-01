@@ -1,0 +1,107 @@
+<div style="background-color: #e1e3e3">
+  <div class="breadcrumbs">
+    <section class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Login</h1>
+          <div class="clearfix"></div>
+          <div class="crumbs">
+            <a itemprop="breadcrumb" href="https://2code.info/demo/themes/ask-me">Home</a>
+            <span class="crumbs-span">/</span>
+            <span class="current">Login</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class='index-no-box'></div>
+  <div class="section-warp top-after-header big-search">
+    <div class="container clearfix">
+      <div class="box_icon box_warp box_no_border box_no_background">
+        <div class="row">
+          <div class="col-md-12">
+            <form class="form-style form-style-2" method="get" action="https://2code.info/demo/themes/ask-me/search/">
+              <div class="search-p">
+                <input class='live-search live-search-big' autocomplete='off' type="text" value="Search here ..."
+                       onfocus="if(this.value=='Search here ...')this.value='';"
+                       onblur="if(this.value=='')this.value='Search here ...';"
+                       name="search">
+                <input type="hidden" name="page_id" value="2199">
+                <input type="hidden" name="search_type" value="questions">
+                <i class="fa fa-search"></i>
+                <button class="ask-search">
+                  <span class="color button small publish-question">Search</span>
+                </button>
+                <div class="search-results results-empty"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="container main-content page-full-width">
+    <div class="row">
+      <div class="with-sidebar-container">
+        <div class="main-sidebar-container col-md-12">
+          <div class="login">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="page-content">
+                  <h2>Login</h2>
+                  <div class="form-style form-style-3">
+                    <div class="ask_form inputs">
+                      <form class="login-form ask_login" #frmLogin="ngForm" (ngSubmit)="authenticateUser()">
+                        <div class="ask_error"></div>
+                        <div class="form-inputs clearfix">
+                          <p class="login-text">
+                            <input class="required-item" type="text" placeholder="Username" name="txtUserName"
+                                   id="txtUserName" [(ngModel)]="checkUser.name">
+                            <i class="icon-user"></i>
+                          </p>
+                          <p class="login-password">
+                            <input class="required-item" type="password" placeholder="Password" name="txtUserPassword"
+                                   id="txtUserPassword" [(ngModel)]="checkUser.password">
+                            <i class="icon-lock"></i>
+                            <a style="cursor: pointer">Forget</a>
+                          </p>
+                        </div>
+                        <p class="form-submit login-submit">
+                          <span class="loader_2"></span>
+                          <input type="submit" value="Log in"
+                                 class="button color small login-submit submit sidebar_submit">
+                        </p>
+                        <div class="rememberme">
+                          <label>
+                            <input type="checkbox" input name="rememberme" checked="checked"> Remember Me</label>
+                        </div>
+                        <input type="hidden" name="redirect_to" value="index.html">
+                        <input type="hidden" name="login_nonce" value="ab8fa900fe">
+                        <input type="hidden" name="ajax_url" value="../wp-admin/admin-ajax.html">
+                        <input type="hidden" name="form_type" value="ask-login">
+                        <div class="errorlogin"></div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="page-content">
+                  <h2>Register Now</h2>
+                  <p>Everyday, developers come to ANSWERS ville to learn, share their knowledge, and build their
+                    careers.
+                    <br>
+                    Join with our developer community.</p>
+                  <div class="button small color signup">Create an account</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <aside class="col-md-3 sidebar sticky-sidebar"></aside>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </section>
+</div>

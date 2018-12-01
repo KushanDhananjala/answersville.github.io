@@ -1,0 +1,453 @@
+<div style="background-color: #e1e3e3">
+  <div class="breadcrumbs">
+    <section class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{{selectedQuestion.title}}</h1>
+          <div class="clearfix"></div>
+          <div class="crumbs">
+            <a itemprop="breadcrumb" href="https://2code.info/demo/themes/ask-me">Home</a>
+            <span class="crumbs-span">/</span>
+            <a href="#">Analytics</a>
+            <span class="crumbs-span">/</span>
+            <span class="current">{{selectedQuestion.title}}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class='index-no-box'></div>
+  <div class="section-warp top-after-header big-search">
+    <div class="container clearfix">
+      <div class="box_icon box_warp box_no_border box_no_background">
+        <div class="row">
+          <div class="col-md-12">
+            <form class="form-style form-style-2" method="get" action="">
+              <div class="search-p">
+                <input class='live-search live-search-big' autocomplete='off' type="text" value="Search here ..."
+                       onfocus="if(this.value=='Search here ...')this.value='';"
+                       onblur="if(this.value=='')this.value='Search here ...';"
+                       name="search">
+                <input type="hidden" name="page_id" value="2199">
+                <input type="hidden" name="search_type" value="questions">
+                <i class="fa fa-search"></i>
+                <button class="ask-search">
+                  <span class="color button small publish-question">Search</span>
+                </button>
+                <div class="search-results results-empty"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="container main-content page-right-sidebar">
+    <div class="row">
+      <div class="with-sidebar-container">
+        <div class="main-sidebar-container col-md-9">
+          <div id="question-2110" itemscope itemtype="http://schema.org/Question">
+            <article
+              class="question single-question question-type-normal sticky post-2110 type-question status-publish hentry question-category-analytics question_tags-analytics question_tags-programs"
+              id="post-2110">
+              <h2>
+                <i class="icon-pushpin tooltip-n question-sticky" original-title="Sticky" id="abc"></i>
+                <span itemprop="name">{{selectedQuestion.title}}</span>
+              </h2>
+              <a class="question-report report_q" style="cursor: pointer">Report</a>
+              <div class="question-type-main">
+                <i class="icon-question-sign"></i>Question
+              </div>
+              <div class="question-inner">
+                <div class="clearfix"></div>
+                <div class="question-desc">
+                  <div class="explain-reported">
+                    <h3>Please briefly explain why you feel this question should be reported .</h3>
+                    <textarea
+                      name="explain-reported"></textarea>
+                    <div class="clearfix"></div>
+                    <div class="loader_3"></div>
+                    <div class="color button small report">Report</div>
+                    <div class="color button small dark_button cancel">Cancel</div>
+                  </div>
+                  <div class="row">
+                    <div class='featured_image_question col-md-3' *ngFor="let questionAttchment of questionAttachments">
+                      <a style="cursor: pointer">
+                        <img alt='{{selectedQuestion.title}}' width='300' height='200' id="myImg1"
+                             [src]="questionAttchment.attachmentUrl"
+                             (click)="viewImage(questionAttchment.attachmentUrl)">
+                      </a>
+                    </div>
+                    <div id="myModal" class="modal">
+                      <span class="close" (click)="closeModelImage()">&times;</span>
+                      <img class="modal-content" id="img01" [src]="selectedImage">
+                    </div>
+                  </div>
+                  <div class='clearfix'></div>
+                  <div class="content-text" itemprop="text" style="font-size: 16px">
+                    <p>{{selectedQuestion.body}}</p>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="loader_2"></div>
+                  <div class='clearfix'></div>
+                  <div class="no_vote_more"></div>
+                </div>
+                <div class="question-details" *ngIf="selectedQuestion.active==0">
+                                        <span class="question-answered">
+                                            <i class="icon-ok"></i>in progress</span>
+                  <span class="question-favorite">
+                                            <i class="icon-star"></i>{{selectedQuestion.votesCount}}</span>
+                </div>
+                <div class="question-details" *ngIf="selectedQuestion.active==1">
+                                        <span class="question-answered question-answered-done">
+                                            <i class="icon-ok"></i>solved</span>
+                  <span class="question-favorite">
+                                            <i class="icon-star"></i>{{selectedQuestion.votesCount}}</span>
+                </div>
+                <span class="question-category">
+                    <a class="single-question-vote-up ask_vote_up question_vote_up vote_not_user tooltip_s"
+                       title="Thumbs up this question" style="cursor: pointer" (click)="voteQuestion(1)">
+                      <i class="icon-thumbs-up"></i>
+                    </a>
+                    <a class="single-question-vote-down ask_vote_down question_vote_down vote_not_user tooltip_s"
+                       title="Thumbs down this question" style="cursor: pointer" (click)="voteQuestion(0)">
+                      <i class="icon-thumbs-down"></i>
+                    </a>
+                 </span>
+                <span class="question-author-meta">
+                                        <a style="cursor: pointer">
+                                            <i class="icon-user"></i>{{selectedUser.name}}</a>
+                                    </span>
+                <span class="question-date" itemprop="dateCreated" datetime="">
+                                        <i class="fa fa-calendar"></i>{{selectedQuestion.creationDate}}</span>
+                <span class="question-comment">
+                                        <a style="cursor: pointer">
+                                            <i class="fa fa-comments-o"></i>
+                                            <span itemprop="answerCount">{{selectedQuestion.answersCount}}</span> Answers</a>
+                                    </span>
+                <span class="question-view">
+                                        <i class="icon-eye-open"></i>{{selectedQuestion.viewsCount}} views</span>
+                <span class="badge-span" style="background-color: #dd9933">{{selectedUserBadge.name}}</span>
+
+                <div class="clearfix"></div>
+              </div>
+            </article>
+
+            <div class="share-tags page-content">
+              <div class="question-tags" style="margin-right: 10%">
+                <a style="cursor: pointer" *ngFor="let questionTag of questionsTags">
+                  <span *ngIf="selectedQuestion.id==questionTag.questionID">
+                    <i class="icon-align-right"></i>
+                    {{questionTag.tagName}} |
+                  </span>
+                </a>
+              </div>
+              <div class="share-inside">
+                <i class="icon-tags"></i>Tags
+              </div>
+              <div class="clearfix"></div>
+            </div>
+
+            <div itemprop="author" itemscope itemtype="http://schema.org/Person" class="about-author clearfix">
+              <span itemprop="name" class="hide">{{selectedUser.displayName}}</span>
+              <div class="author-image">
+                <a href="#" original-title="" class="tooltip-n">
+                  <img itemprop='image' class='avatar avatar-65 photo' alt='{{selectedUser.displayName}}' width='65'
+                       height='65'
+                       [src]="selectedUser.profileImageUrl"> </a>
+              </div>
+              <div class="author-bio">
+                <h4> About
+                  <a href='#'>{{selectedUser.name}}</a>
+                  <img class="verified_user tooltip-n" alt="Verified" original-title="Verified"
+                       src="../../../../assets/img/main/verified.png">
+                  <span class="badge-span" style="background-color: #dd9933">{{selectedUserBadge.name}}</span>
+                </h4> {{selectedUser.about}}
+                <div class="clearfix"></div>
+                <br>
+                <span class="user-follow-me">Follow Me</span>
+                <div class="social_icons_display_2">
+                  <a href="#" original-title="Facebook" class="tooltip-n">
+                                            <span class="icon_i">
+                                                <span class="icon_square" icon_size="30" span_bg="#3b5997"
+                                                      span_hover="#2f3239">
+                                                    <i class="social_icon-facebook"></i>
+                                                </span>
+                                            </span>
+                  </a>
+                  <a href="#" original-title="Twitter" class="tooltip-n">
+                                            <span class="icon_i">
+                                                <span class="icon_square" icon_size="30" span_bg="#00baf0"
+                                                      span_hover="#2f3239">
+                                                    <i class="social_icon-twitter"></i>
+                                                </span>
+                                            </span>
+                  </a>
+                  <a href="#" original-title="Linkedin" class="tooltip-n">
+                                            <span class="icon_i">
+                                                <span class="icon_square" icon_size="30" span_bg="#006599"
+                                                      span_hover="#2f3239">
+                                                    <i class="social_icon-linkedin"></i>
+                                                </span>
+                                            </span>
+                  </a>
+                  <a href="#" original-title="Google plus" class="tooltip-n">
+                                            <span class="icon_i">
+                                                <span class="icon_square" icon_size="30" span_bg="#c43c2c"
+                                                      span_hover="#2f3239">
+                                                    <i class="social_icon-gplus"></i>
+                                                </span>
+                                            </span>
+                  </a>
+                  <a href="#" original-title="Pinterest" class="tooltip-n">
+                                            <span class="icon_i">
+                                                <span class="icon_square" icon_size="30" span_bg="#e13138"
+                                                      span_hover="#2f3239">
+                                                    <i class="social_icon-pinterest"></i>
+                                                </span>
+                                            </span>
+                  </a>
+                  <a href="#" original-title="Instagram" class="tooltip-n">
+                                            <span class="icon_i">
+                                                <span class="icon_square" icon_size="30" span_bg="#548bb6"
+                                                      span_hover="#2f3239">
+                                                    <i class="social_icon-instagram"></i>
+                                                </span>
+                                            </span>
+                  </a>
+                  <a href="mailto:vbegy.info@gmail.com" original-title="Email" class="tooltip-n">
+                                            <span class="icon_i">
+                                                <span class="icon_square" icon_size="30" span_bg="#000"
+                                                      span_hover="#2f3239">
+                                                    <i class="social_icon-email"></i>
+                                                </span>
+                                            </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div id="related-posts" hidden="true">
+              <h2>Related questions</h2>
+              <ul class="related-posts">
+                <li class="related-item">
+                  <h3>
+                    <a href="../what-are-your-thoughts-on-google-analytics-vs-other-analytics-platforms/index.html"
+                       title="What are your thoughts on Google Analytics vs other analytics platforms?">
+                      <i class="icon-double-angle-right"></i>What are your thoughts on Google Analytics vs other
+                      analytics
+                      platforms?</a>
+                  </h3>
+                </li>
+                <li class="related-item">
+                  <h3>
+                    <a href="../google-analytics-reads-like-a-seismic-chart-lately/index.html"
+                       title="Google Analytics reads like a seismic chart lately">
+                      <i class="icon-double-angle-right"></i>Google Analytics reads like a seismic chart lately</a>
+                  </h3>
+                </li>
+              </ul>
+            </div>
+
+            <div id="comments"></div>
+            <div id="commentlist" class="page-content ">
+              <div class="boxedtitle page-title">
+                <h2>Answers ( <span class="color">{{answersCount}}</span> )</h2>
+              </div>
+              <ol class="commentlist clearfix">
+                <li class="comment byuser comment-author-mohamed even thread-even depth-1 comment " id="li-comment-937"
+                    *ngFor="let selectedQuestionAnswer of selectedQuestionAnswersList">
+                  <div id="comment-937" class="comment-body clearfix" rel="post-2110" itemscope
+                       itemtype="http://schema.org/Answer">
+                    <div class="avatar-img">
+                      <a original-title="Mohamed Habaza" class="tooltip-n" href="">
+                        <img class='avatar avatar-65 photo' alt='{{selectedQuestionAnswer.userDisplayName}}' width='65'
+                             height='65'
+                             [src]="selectedQuestionAnswer.userProfileImageUrl"> </a>
+                    </div>
+                    <div class="comment-text">
+                      <div class="author clearfix">
+                        <div class="comment-author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+                          <a href="">
+                            <span itemprop="name">{{selectedQuestionAnswer.userDisplayName}}</span>
+                          </a>
+                          <span class="badge-span" style="background-color: #dd9933">{{selectedQuestionAnswer.userBadgeName}}</span>
+                        </div>
+                        <div class="comment-vote">
+                          <ul class="single-question-vote">
+                            <li class="loader_3"></li>
+                            <li>
+                              <a style="cursor: pointer"
+                                 class="single-question-vote-up ask_vote_up comment_vote_up vote_not_user"
+                                 title="Thumbs up this answer" (click)="voteAnswer(selectedQuestionAnswer.answerID,1)">
+                                <i class="icon-thumbs-up"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a style="cursor: pointer"
+                                 class="single-question-vote-down ask_vote_down comment_vote_down vote_not_user"
+                                 title="Thumbs down this answer"
+                                 (click)="voteAnswer(selectedQuestionAnswer.answerID,0)">
+                                <i class="icon-thumbs-down"></i>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                        <!--<span class="question-favorite"><i class="icon-star"></i>5</span>-->
+                        <span itemprop="upvoteCount" class="question-vote-result question_vote_result"
+                              title="Score of this answer" style="color:#990707">
+                          <i class="icon-star" style="color: #990707"></i>
+                          {{selectedQuestionAnswer.score}}
+                        </span>
+                        <div class="comment-meta" itemprop="dateCreated" datetime="">
+                          <a href="#" class="date">
+                            <i class="fa fa-calendar"></i>{{selectedQuestionAnswer.date}}</a>
+                        </div>
+                        <div class="comment-reply">
+                          <a class="question_r_l comment_l report_c" (click)="checkReportStatus()"
+                             style="cursor: pointer">
+                            <i class="icon-flag"></i>Report</a>
+                          <a rel='nofollow' class='comment-reply-link' (click)="focusToReply()"
+                             aria-label='Reply to User' style="cursor: pointer">
+                            <i class="icon-reply"></i>Reply</a>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <div class='featured_image_question col-md-3'
+                             *ngFor="let answerAttchment of answerAttachments">
+                          <a style="cursor: pointer"
+                             *ngIf="selectedQuestionAnswer.answerID==answerAttchment.answerDTO.id">
+                            <img alt='{{selectedQuestionAnswer.answer}}' width='300' height='200' id="myImg"
+                                 [src]="answerAttchment.attachmentUrl"
+                                 (click)="viewImage(answerAttchment.attachmentUrl)">
+                          </a>
+                        </div>
+                      </div>
+
+                      <div class="text">
+                        <div itemprop="text">
+                          <p>{{selectedQuestionAnswer.answer}}</p>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="text">
+                        <div class="" *ngIf="reportAnswerStatus">
+                          <h3 style="margin-bottom: 10px;font-size: 14px;">
+                            Please briefly explain why you feel this answer should be reported.
+                          </h3>
+                          <textarea name="txtReason" [(ngModel)]="reportedAnswer.reason"
+                                    style="width: 100%;height: 150px;margin: 20px 0;"> </textarea>
+                          <div class="clearfix"></div>
+                          <div class="loader_3"></div>
+                          <div class="color button small report"
+                               (click)="reportAnswer(selectedQuestionAnswer.answerID)">
+                            Report
+                          </div>
+                          <div class="color button small dark_button cancel" (click)="checkReportStatus()">Cancel</div>
+                        </div>
+                      </div>
+
+                      <div class="clearfix"></div>
+                      <div class="loader_3"></div>
+                      <div class="no_vote_more"></div>
+                    </div>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="pagination comments-pagination"></div>
+            <div id="respond1" class="comment-respond page-content clearfix" *ngIf="!logged">
+              <div class="boxedtitle page-title">
+                <h2>Want to leave an answer ? , Login First !</h2>
+              </div>
+              <div>
+                <input type="submit" value="Log in"
+                       class="button color small login-submit submit sidebar_submit" (click)="fowerdToLogin()">
+              </div>
+            </div>
+            <div id="respond" class="comment-respond page-content clearfix" *ngIf="logged">
+              <div class="boxedtitle page-title">
+                <h2>Leave an answer</h2>
+              </div>
+              <form #frmAnswer="ngForm" (ngSubmit)="checkPostAnswerRequirements()">
+                <div class="ask_error"></div>
+                <div id="respond-textarea">
+
+                  <div class="row" style="margin-left: 0.5%">
+                    <label for="imageUpload">Any Attchments? Upload here...</label>
+                    <div class="fileinputs">
+                      <input type="file" class="file" id="imageUpload" (change)="showPreviewImage($event)"
+                             accept=".png, .jpg, .jpeg">
+                      <div class="fakefile">
+                        <button type="button" class="button small margin_0">Select file</button>
+                        <span><i class="icon-arrow-up"></i>Browse</span>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-top: -3rem" *ngIf="answerImages.length>=1">
+                      <div class="col-md-2"></div>
+                      <div class="col-md-3" *ngIf="answerImageUrl1">
+                        <div class="avatar-upload">
+                          <div class="avatar-preview">
+                            <div class="imagePreview"
+                                 [ngStyle]="{'background-image': 'url(' + answerImageUrl1 + ')'}">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3" *ngIf="answerImageUrl2">
+                        <div class="avatar-upload">
+                          <div class="avatar-preview">
+                            <div class="imagePreview"
+                                 [ngStyle]="{'background-image': 'url(' + answerImageUrl2 + ')'}">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3" *ngIf="answerImageUrl3">
+                        <div class="avatar-upload">
+                          <div class="avatar-preview">
+                            <div class="imagePreview"
+                                 [ngStyle]="{'background-image': 'url(' + answerImageUrl3 + ')'}">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p>
+                    <label class="required" for="txtAnswer">Your Answer
+                      <span>*</span>
+                    </label>
+                    <textarea id="txtAnswer" name="txtAnswer" [(ngModel)]="answer.answer" aria-required="true" cols="58"
+                              rows="10"></textarea>
+                  </p>
+                </div>
+                <div class="cancel-comment-reply">
+                  <a rel="nofollow" id="cancel-comment-reply-link" href="index.html#respond" style="display:none;">Click
+                    here to cancel reply.</a>
+                </div>
+                <p class="form-submit">
+                  <input name="submit" type="submit" id="submit" value="Post your answer" class="button small color">
+                </p>
+              </form>
+            </div>
+            <div class="post-next-prev clearfix">
+              <p class="prev-post">
+                <a href="../what-are-your-thoughts-on-google-analytics-vs-other-analytics-platforms/index.html"
+                   rel="prev">
+                  <i class="icon-double-angle-left"></i>&nbsp;Previous question</a>
+              </p>
+              <p class="next-post"></p>
+            </div>
+          </div>
+        </div>
+
+        <app-right-bar-without-profile></app-right-bar-without-profile>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </section>
+</div>

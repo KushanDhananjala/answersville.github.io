@@ -1,0 +1,164 @@
+<div style="background-color: #e1e3e3">
+  <div class="breadcrumbs">
+    <section class="container">
+      <div class="row">
+        <div class="col-md-6"><h1>{{user.name}}</h1>
+          <div class="clearfix"></div>
+          <div class="crumbs"><a itemprop="breadcrumb" href="https://2code.info/demo/themes/ask-me">Home</a><span
+            class="crumbs-span">/</span> <span class="current">{{user.displayName}}</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class='index-no-box'></div>
+  <div class="section-warp top-after-header big-search">
+    <div class="container clearfix">
+      <div class="box_icon box_warp box_no_border box_no_background">
+        <div class="row">
+          <div class="col-md-12">
+            <form class="form-style form-style-2" method="get" action="https://2code.info/demo/themes/ask-me/search/">
+              <div class="search-p"><input class='live-search live-search-big' autocomplete='off' type="text"
+                                           value="Search here ..."
+                                           onfocus="if(this.value=='Search here ...')this.value='';"
+                                           onblur="if(this.value=='')this.value='Search here ...';" name="search"><input
+                type="hidden" name="page_id" value="2199"><input type="hidden" name="search_type" value="questions"><i
+                class="fa fa-search"></i>
+                <button class="ask-search"><span class="color button small publish-question">Search</span></button>
+                <div class="search-results results-empty"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="container main-content page-right-sidebar">
+    <div class="row">
+      <div class="with-sidebar-container">
+        <div class="main-sidebar-container col-md-9">
+          <div class="row">
+            <div class="user-profile">
+              <div class="col-md-12">
+                <div class="page-content">
+                  <h2>About <a style="cursor: pointer">{{user.displayName}}</a>
+                    <span class="badge-span" style="background-color: #dd9933"
+                          *ngIf="user.badgeID==1">Beginner</span>
+                    <span class="badge-span" style="background-color: #dd9933"
+                          *ngIf="user.badgeID==2">Teacher</span>
+                    <span class="badge-span" style="background-color: #dd9933"
+                          *ngIf="user.badgeID==3">Pundit</span>
+                    <span class="badge-span" style="background-color: #dd9933"
+                          *ngIf="user.badgeID==4">Explainer</span>
+                    <span class="badge-span" style="background-color: #dd9933"
+                          *ngIf="user.badgeID==5">Professional</span>
+                    <span class="badge-span" style="background-color: #dd9933"
+                          *ngIf="user.badgeID==6">Enlightened</span>
+                  </h2>
+                  <div class="ul_list ul_list-icon-ok about-user">
+                    <ul>
+                      <li><i class="icon-plus"></i><strong>Registered: </strong><span>{{user.joinDate}}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="avatar-upload" style="margin-top: -1rem; margin-bottom: -1rem">
+                    <div class="avatar-preview">
+                      <img id="imagePreview1" [src]="user.profileImageUrl">
+                    </div>
+                  </div>
+
+                  <div class="clearfix"></div>
+                  <p></p>
+                  <div class="clearfix"></div>
+                </div>
+              </div>
+
+              <div class="col-md-12">
+                <div class="page-content page-content-user-profile">
+                  <div class="user-profile-widget"><h2>User Stats</h2>
+                    <div class="ul_list ul_list-icon-ok">
+                      <ul>
+                        <li>
+                          <a style="cursor: pointer"><i class="icon-user"></i>
+                            User Name : {{user.name}}</a>
+                        </li>
+                        <li>
+                          <a style="cursor: pointer"><i class="icon-user-md"></i>
+                            Nick Name : {{user.displayName}}</a>
+                        </li>
+                        <li>
+                          <a style="cursor: pointer"><i class="icon-comments"></i>
+                            Email : {{user.email}}</a>
+                        </li>
+                        <li>
+                          <a style="cursor: pointer"><i class="icon-heart"></i>
+                            Age : {{user.age}}</a>
+                        </li>
+                        <li>
+                          <a style="cursor: pointer"><i class="icon-location-arrow"></i>
+                            Location : {{user.location}}</a>
+                        </li>
+                        <li>
+                          <a style="cursor: pointer"><i class="icon-star"></i>
+                            Reputation : {{user.reputation}}</a>
+                        </li>
+                        <li>
+                          <a style="cursor: pointer"><i class="icon-facebook"></i>
+                            Facebook : {{user.facebookUrl}}</a>
+                        </li>
+                        <li>
+                          <a style="cursor: pointer"><i class="icon-github"></i>
+                            GitHub : {{user.githubUrl}}</a>
+                        </li>
+                        <li style="width: 100%">
+                          <a style="cursor: pointer">
+                            <span style="margin-left: 45%"><i class="icon-asterisk"></i>
+                            About :</span>
+                            <br><br>{{user.about}}</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div class="page-content">
+            <div class="user-stats">
+              <div class="user-stats-head">
+                <div class="block-stats-1 stats-head">#</div>
+                <div class="block-stats-2 stats-head">Today</div>
+                <div class="block-stats-3 stats-head">Month</div>
+                <div class="block-stats-4 stats-head">Total</div>
+              </div>
+              <div class="user-stats-item">
+                <div class="block-stats-1">Questions</div>
+                <div class="block-stats-2">0</div>
+                <div class="block-stats-3">0</div>
+                <div class="block-stats-4">0</div>
+              </div>
+              <div class="user-stats-item">
+                <div class="block-stats-1">Answers</div>
+                <div class="block-stats-2">0</div>
+                <div class="block-stats-3">0</div>
+                <div class="block-stats-4">0</div>
+              </div>
+              <div class="user-stats-item user-stats-item-last">
+                <div class="block-stats-1">Visits</div>
+                <div class="block-stats-2">6</div>
+                <div class="block-stats-3">6</div>
+                <div class="block-stats-4">136</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-right-bar-without-profile></app-right-bar-without-profile>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </section>
+</div>

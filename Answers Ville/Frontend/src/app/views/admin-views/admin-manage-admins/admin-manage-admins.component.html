@@ -1,0 +1,166 @@
+<div class="inbox">
+  <h2>Magane Admins</h2>
+  <div class="row">
+    <div class="compose-right">
+      <div class="work-progres">
+        <div class="chit-chat-heading">
+          All Admins
+        </div>
+        <br>
+        <div class="table-responsive">
+          <table class="table ui red table" style="cursor: pointer">
+            <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Display Name</th>
+              <th>Email</th>
+              <th>Age</th>
+              <th>Location</th>
+              <th>Reputation</th>
+              <th>Facebook Link</th>
+              <th>GitHub Link</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let selectedAdmin of allAdmins | paginate: { itemsPerPage: 5, currentPage: p }"
+                (click)="selectAdmin(selectedAdmin)" style="max-height: 10px">
+              <td><img class="tblImageRow" [src]="selectedAdmin.profileImageUrl"/></td>
+              <td>{{selectedAdmin.name}}</td>
+              <td>{{selectedAdmin.displayName}}</td>
+              <td>{{selectedAdmin.email}}</td>
+              <td>{{selectedAdmin.age}}</td>
+              <td>{{selectedAdmin.location}}</td>
+              <td>{{selectedAdmin.reputation}}</td>
+              <td><a style="cursor: pointer">{{selectedAdmin.facebookUrl}}</a></td>
+              <td><a style="cursor: pointer">{{selectedAdmin.githubUrl}}</a></td>
+            </tr>
+            <tr>
+              <td colspan="12">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <h2>Manage Admins</h2>
+  <div class="row">
+    <div class="compose-right">
+      <div class="inbox-details-default">
+        <div class="inbox-details-heading">
+          Admin Details
+        </div>
+        <div class="inbox-details-body">
+          <div class="alert alert-info">
+            Please fill details to register a admin.
+          </div>
+          <form class="com-mail" #frmAdmin="ngForm" (ngSubmit)="uploadProfileImage()">
+
+            <div class="row">
+              <div class="avatar-upload" style="margin-top: -1rem;">
+                <div class="avatar-edit">
+                  <input type='file' id="imageUpload" (change)="showPreviewImage($event)"
+                         accept=".png, .jpg, .jpeg">
+                  <label for="imageUpload">
+                    <i class="fa fa-refresh fa-3x" aria-hidden="true"></i>
+                  </label>
+                </div>
+                <div class="avatar-preview">
+                  <div id="imagePreview1" style="background-image: url(http://i.pravatar.cc/500?img=7);"
+                       *ngIf="!localUrl">
+                  </div>
+                  <div id="imagePreview" [ngStyle]="{'background-image': 'url(' + localUrl + ')'}" *ngIf="localUrl">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <p class="form-group">
+                  <label for="txtUserName">User Name</label>
+                  <input id="txtUserName" name="txtUserName" [(ngModel)]="admin.name"
+                         class="form-control" placeholder="Enter user name here ...">
+                </p>
+                <p class="form-group">
+                  <label for="txtDisplayName">Display Name</label>
+                  <input id="txtDisplayName" name="txtDisplayName" [(ngModel)]="admin.displayName"
+                         class="form-control" placeholder="Enter display name here ...">
+                </p>
+                <p class="form-group">
+                  <label for="txtEmail">Email</label>
+                  <input id="txtEmail" name="txtEmail" [(ngModel)]="admin.email"
+                         class="form-control" placeholder="Enter email here ...">
+                </p>
+                <p class="form-group">
+                  <label for="txtAge">Age</label>
+                  <input id="txtAge" name="txtAge" [(ngModel)]="admin.age"
+                         class="form-control" placeholder="Enter age here ...">
+                </p>
+              </div>
+              <div class="col-md-6">
+                <p class="form-group">
+                  <label for="txtLocation">Location</label>
+                  <input id="txtLocation" name="txtLocation" [(ngModel)]="admin.location"
+                         class="form-control" placeholder="Enter location here ...">
+                </p>
+                <p class="form-group">
+                  <label for="txtReputation">Reputation</label>
+                  <input id="txtReputation" name="txtReputation" [(ngModel)]="admin.reputation"
+                         class="form-control" placeholder="Enter reputation here ...">
+                </p>
+                <p class="form-group">
+                  <label for="txtFacebookURL">Facebook URL</label>
+                  <input id="txtFacebookURL" name="txtFacebookURL" [(ngModel)]="admin.facebookUrl"
+                         class="form-control" placeholder="Enter facebook link here ...">
+                </p>
+                <p class="form-group">
+                  <label for="txtGitHubURL">GitHub URL</label>
+                  <input id="txtGitHubURL" name="txtGitHubURL" [(ngModel)]="admin.githubUrl"
+                         class="form-control" placeholder="Enter github link here ...">
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <label for="txtAbout">About</label>
+                <textarea class="form-control" rows="3" name="txtAbout" id="txtAbout" [(ngModel)]="admin.about">
+                </textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <p class="form-group">
+                  <label for="txtPassword">Password</label>
+                  <input id="txtPassword" name="txtPassword" [(ngModel)]="admin.password" type="password"
+                         class="form-control" placeholder="Enter password here ..." style="width: 100%">
+                </p>
+              </div>
+              <div class="col-md-6">
+                <p class="form-group">
+                  <label for="txtConfirmPassword">Confirm Password</label>
+                  <input id="txtConfirmPassword" name="txtConfirmPassword" [(ngModel)]="confirmPassword" type="password"
+                         class="form-control" placeholder="Reenter password here ..." style="width: 100%">
+                </p>
+              </div>
+            </div>
+
+            <br>
+            <button class="btn btn-primary" type="submit">Save Admin</button>
+            &nbsp;&nbsp;
+            <button class="btn btn-warning" type="button" (click)="clear()">Clear</button>
+          </form>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

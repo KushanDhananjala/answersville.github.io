@@ -1,0 +1,211 @@
+<div style="background-color: #e1e3e3">
+  <div class="breadcrumbs">
+    <section class="container">
+      <div class="row">
+        <div class="col-md-12"><h1>Edit Profile</h1>
+          <div class="clearfix"></div>
+          <div class="crumbs"><a itemprop="breadcrumb" href="https://2code.info/demo/themes/ask-me">Home</a><span
+            class="crumbs-span">/</span> <span class="current">Edit Profile</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class='index-no-box'></div>
+  <div class="section-warp top-after-header big-search">
+    <div class="container clearfix">
+      <div class="box_icon box_warp box_no_border box_no_background">
+        <div class="row">
+          <div class="col-md-12">
+            <form class="form-style form-style-2" method="get" action="https://2code.info/demo/themes/ask-me/search/">
+              <div class="search-p"><input class='live-search live-search-big' autocomplete='off' type="text"
+                                           value="Search here ..."
+                                           onfocus="if(this.value=='Search here ...')this.value='';"
+                                           onblur="if(this.value=='')this.value='Search here ...';" name="search"><input
+                type="hidden" name="page_id" value="2199"><input type="hidden" name="search_type" value="questions"><i
+                class="fa fa-search"></i>
+                <button class="ask-search"><span class="color button small publish-question">Search</span></button>
+                <div class="search-results results-empty"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="container main-content page-right-sidebar">
+    <div class="row">
+      <div class="with-sidebar-container">
+        <div class="main-sidebar-container col-md-9">
+          <div class="page-content">
+
+            <div class="row">
+              <div class="user-profile">
+                <div class="col-md-12">
+                  <h2>
+                    Complete Your Registration
+                  </h2>
+
+                  <div class="ul_list ul_list-icon-ok about-user">
+                    <ul>
+                      <li><i class="icon-plus"></i><strong>User: </strong><span>{{user.name}}</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="avatar-upload" style="margin-top: -1rem;">
+                    <div class="avatar-edit">
+                      <input type='file' id="imageUpload" (change)="showPreviewImage($event)"
+                             accept=".png, .jpg, .jpeg">
+                      <label for="imageUpload">
+                        <i class="fa fa-refresh fa-3x" aria-hidden="true"></i>
+                      </label>
+                    </div>
+                    <div class="avatar-preview">
+                      <div id="imagePreview1" style="background-image: url(http://i.pravatar.cc/500?img=7);"
+                           *ngIf="!localUrl">
+                      </div>
+                      <div id="imagePreview" [ngStyle]="{'background-image': 'url(' + localUrl + ')'}" *ngIf="localUrl">
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="form-style form-style-4">
+              <form class="edit-profile-form vpanel_form" #frmEditProfile="ngForm" (ngSubmit)="uploadProfileImage()">
+                <div class="form-inputs clearfix">
+                  <p class="form-group">
+                    <label for="txtName" class="required">Username
+                      <span>*</span>
+                    </label>
+                    <input type="text" class="form-control required-item" name="txtName" id="txtName"
+                           [(ngModel)]="user.name" placeholder="Enter your usrname here ...">
+                  </p>
+                  <p class="form-group">
+                    <label for="txtDisplayName" class="required">Display Name
+                      <span>*</span>
+                    </label>
+                    <input type="text" class="form-control required-item" name="txtDisplayName" id="txtDisplayName"
+                           [(ngModel)]="user.displayName"
+                           placeholder="Enter the name you want to display in this site ...">
+                  </p>
+                  <p class="form-group">
+                    <label for="txtEmail" class="required">E-Mail
+                      <span>*</span>
+                    </label>
+                    <input type="email" class="form-control required-item" name="txtEmail" id="txtEmail"
+                           [(ngModel)]="user.email" placeholder="Enter your email here ...">
+                  </p>
+                  <p class="form-group">
+                    <label for="txtAge" class="required">Age
+                      <span>*</span>
+                    </label>
+                    <input type="text" class="form-control required-item" name="txtAge" id="txtAge"
+                           [(ngModel)]="user.age" placeholder="Enter your age here ...">
+                  </p>
+                  <p class="form-group">
+                    <label for="txtLocation" class="required">Location
+                      <span>*</span>
+                    </label>
+                    <input type="text" class="form-control required-item" name="txtLocation" id="txtLocation"
+                           [(ngModel)]="user.location" placeholder="Enter country & state here ...">
+                  </p>
+                  <p class="form-group">
+                    <label for="txtReputation" class="required">Reputation
+                      <span>*</span>
+                    </label>
+                    <input type="text" class="form-control required-item" name="txtReputation" id="txtReputation"
+                           [(ngModel)]="user.reputation" placeholder="Enter your reputation here ...">
+                  </p>
+                  <p class="form-group">
+                    <label for="txtFacebookUrl" class="required">Facebook Account
+                      <span>*</span>
+                    </label>
+                    <input type="text" class="form-control required-item" name="txtFacebookUrl" id="txtFacebookUrl"
+                           [(ngModel)]="user.facebookUrl" placeholder="Paste your facebook account url here ...">
+                  </p>
+                  <p>
+                    <label for="txtGithubUrl" class="required">Github Account
+                      <span>*</span>
+                    </label>
+                    <input type="text" class="form-control required-item" name="txtGithubUrl" id="txtGithubUrl"
+                           [(ngModel)]="user.githubUrl" placeholder="Paste your github account url here ...">
+                  </p>
+                  <p class="form-group">
+                    <label for="txtPassword" class="required">Password
+                      <span>*</span>
+                    </label>
+                    <input type="password" class="form-control required-item" name="txtPassword" id="txtPassword"
+                           [(ngModel)]="user.password" placeholder="Enter your password here ..." autocomplete="off">
+                  </p>
+                  <p class="form-group">
+                    <label for="txtConfirmPassword" class="required">Confirm Password
+                      <span>*</span>
+                    </label>
+                    <input type="password" class="form-control required-item" name="txtConfirmPassword"
+                           id="txtConfirmPassword" placeholder="Retype your password here ..."
+                           [(ngModel)]="confirmPassword" autocomplete="off">
+                  </p>
+
+                </div>
+                <div class="form-style form-style-2 form-style-3">
+                  <p><label for="txtAbout">About Yourself</label>
+                    <textarea name="txtAbout" id="txtAbout" cols="58" rows="8"
+                              class="form-group" [(ngModel)]="user.about" placeholder="A breif detail about you ...">
+
+                    </textarea>
+                  </p>
+                </div>
+
+                <div class="form-inputs clearfix">
+                  <input type="submit" value="Save" class="button color small login-submit submit">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <aside class="col-md-3 sidebar sticky-sidebar">
+          <div class="widget_ask" disabled><a href="" routerLink="/main//post-question"
+                                              class="color button small margin_0">Ask a Question</a></div>
+          <div id="stats-widget-2" class="widget stats-widget"><h3 class="widget_title">Stats</h3>
+            <div class="widget_stats ul_list ul_list-icon-ok">
+              <ul>
+                <li><i class="icon-question-sign"></i>Questions ( <span>19</span> )</li>
+                <li><i class="icon-comment"></i>Answers ( <span>44</span> )</li>
+                <li><i class="icon-asterisk"></i>Best Answers ( <span>14</span> )</li>
+                <li><i class="icon-user"></i>Users ( <span>1526</span> )</li>
+              </ul>
+            </div>
+          </div>
+          <div id="counter-widget-2" class="widget counter-widget"><h3 class="widget_title">Find Us</h3>
+            <ul class="widget_social">
+              <li class="rss-subscribers"><a href="https://2code.info/demo/themes/ask-me/feed/" target="_blank"><strong><i
+                class="icon-rss"></i><span>Subscribe</span><br>
+                <small>To RSS Feed</small>
+              </strong></a></li>
+              <li class="facebook-fans"><a href="https://www.facebook.com/2code.info/" target="_blank"><strong><i
+                class="social_icon-facebook"></i><span>489</span><br>
+                <small>People like it</small>
+              </strong></a></li>
+              <li class="gplus-subs"><a href="https://plus.google.com/+tutsplus" target="_blank"><strong><i
+                class="icon-google-plus"></i><span>9,197</span><br>
+                <small>Followers</small>
+              </strong></a></li>
+              <li class="twitter-followers"><a href="https://twitter.com/2codeThemes" target="_blank"><strong><i
+                class="social_icon-twitter"></i><span>28</span><br>
+                <small>Followers</small>
+              </strong></a></li>
+              <li class="youtube-subs"><a href="https://www.youtube.com/channel/UCht9cayN2rRaXk5VgMJtAsA"
+                                          target="_blank"><strong><i class="icon-play"></i><span>478</span><br>
+                <small>Subscribers</small>
+              </strong></a></li>
+            </ul>
+          </div>
+        </aside>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </section>
+</div>

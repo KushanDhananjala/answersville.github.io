@@ -1,0 +1,170 @@
+<div style="background-color: #e1e3e3">
+  <div class="breadcrumbs">
+    <section class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Post Question</h1>
+          <div class="clearfix"></div>
+          <div class="crumbs">
+            <a itemprop="breadcrumb" href="https://2code.info/demo/themes/ask-me">Home</a>
+            <span class="crumbs-span">/</span>
+            <span class="current">Post Question</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class='index-no-box'></div>
+  <div class="section-warp top-after-header big-search">
+    <div class="container clearfix">
+      <div class="box_icon box_warp box_no_border box_no_background">
+        <div class="row">
+          <div class="col-md-12">
+            <form class="form-style form-style-2" method="get" action="https://2code.info/demo/themes/ask-me/search/">
+              <div class="search-p">
+                <input class='live-search live-search-big' autocomplete='off' type="text" value="Search here ..."
+                       onfocus="if(this.value=='Search here ...')this.value='';"
+                       onblur="if(this.value=='')this.value='Search here ...';"
+                       name="search">
+                <input type="hidden" name="page_id" value="2199">
+                <input type="hidden" name="search_type" value="questions">
+                <i class="fa fa-search"></i>
+                <button class="ask-search">
+                  <span class="color button small publish-question">Search</span>
+                </button>
+                <div class="search-results results-empty"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section class="container main-content page-right-sidebar">
+    <div class="row">
+      <div class="with-sidebar-container">
+        <div class="main-sidebar-container col-md-9">
+          <div class="page-content">
+            <div class="boxedtitle page-title">
+              <h2>Post Question</h2>
+            </div>
+            <div class="form-posts">
+              <div class="form-style form-style-3 post-submit">
+                <div class="add_post">
+                  <div class='if_no_login'>
+                    <form class="new-post-form" #frmPostQuestion="ngForm" (ngSubmit)="checkPostQuestionRequirements()">
+                      <div class="note_error display"></div>
+                      <div class="form-inputs clearfix">
+                        <p class="form-group">
+                          <label for="txtQuestionTitle" class="required">Question Title
+                            <span>*</span>
+                          </label>
+                          <input name="txtQuestionTitle" id="txtQuestionTitle" class="the-username form-control"
+                                 type="text" value="" [(ngModel)]="question.title"
+                                 placeholder="Type your question title ...">
+                        </p>
+                        <br>
+
+                        <div class="form-group row">
+                          <div class="col-md-2">
+                            <label for="lblTags" class="required" style="width: 120px">Question Tags
+                              <span>*</span>
+                            </label>
+                          </div>
+
+                          <div class="col-md-10">
+                            <ng-multiselect-dropdown id="lblTags"
+                                                     [placeholder]="'Enter your post related tags here ...'"
+                                                     [data]="tagList"
+                                                     [(ngModel)]="selectedTags"
+                                                     [ngModelOptions]="{standalone: true}"
+                                                     [settings]="dropdownTagsSettings"
+                                                     (onSelect)="onItemSelect($event)"
+                                                     (onSelectAll)="onSelectAll($event)"
+                            >
+                            </ng-multiselect-dropdown>
+                          </div>
+                        </div>
+                        <br>
+
+                        <label for="imageUpload">Attachment</label>
+                        <div class="fileinputs">
+                          <input type="file" class="file" id="imageUpload" (change)="showPreviewImage($event)"
+                                 accept=".png, .jpg, .jpeg">
+                          <div class="fakefile">
+                            <button type="button" class="button small margin_0">Select file</button>
+                            <span><i class="icon-arrow-up"></i>Browse</span>
+                          </div>
+                        </div>
+                        <div class="row" style="margin-top: -3rem" *ngIf="questionImages.length>=1">
+                          <div class="col-md-2"></div>
+                          <div class="col-md-3" *ngIf="questionImageUrl1">
+                            <div class="avatar-upload">
+                              <div class="avatar-preview">
+                                <div class="imagePreview" [ngStyle]="{'background-image': 'url(' + questionImageUrl1 + ')'}">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3" *ngIf="questionImageUrl2">
+                            <div class="avatar-upload">
+                              <div class="avatar-preview">
+                                <div class="imagePreview" [ngStyle]="{'background-image': 'url(' + questionImageUrl2 + ')'}">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3" *ngIf="questionImageUrl3">
+                            <div class="avatar-upload">
+                              <div class="avatar-preview">
+                                <div class="imagePreview" [ngStyle]="{'background-image': 'url(' + questionImageUrl3 + ')'}">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group details-area">
+                        <label for="txtQuestionBody" class="required">Question Details
+                          <span>*</span>
+                        </label>
+                        <textarea name="txtQuestionBody" id="txtQuestionBody" class="form-control the-textarea"
+                                  placeholder="Enter your question details here ..." [(ngModel)]="question.body"
+                                  aria-required="true" cols="58" rows="8"></textarea>
+                        <div class="clearfix"></div>
+                      </div>
+                      <br>
+
+                      <!--<div class="form-inputs clearfix">-->
+                      <!--<p class='ask_captcha_p'>-->
+                      <!--<label for='ask_captcha_900' class='required'>Captcha-->
+                      <!--<span>*</span>-->
+                      <!--</label>-->
+                      <!--<input size='10' id='ask_captcha_900' name='ask_captcha' class='ask_captcha'-->
+                      <!--value='' type='text'>-->
+                      <!--<img class='ask_captcha_img' src='../wp-content/themes/ask-me/captcha/create_image.png'-->
+                      <!--alt='Captcha' title='Click here to update the captcha'-->
+                      <!--onclick="javascript:ask_get_captcha('../wp-content/themes/ask-me/captcha/create_image.png', 'ask_captcha_img_900');"-->
+                      <!--id='ask_captcha_img_900'>-->
+                      <!--<span class='ask_captcha_span'>Click on image to update the captcha .</span>-->
+                      <!--</p>-->
+                      <!--</div>-->
+                      <p class="form-submit margin_0">
+                        <input type="submit" value="Publish Your Question"
+                               class="button color small submit add_qu publish-post">
+                      </p>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-right-bar-without-profile></app-right-bar-without-profile>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </section>
+</div>

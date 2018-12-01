@@ -1,0 +1,106 @@
+<div class="inbox">
+  <h2>Reported Answers</h2>
+  <div class="row">
+    <div class="compose-right">
+      <div class="work-progres">
+        <div class="chit-chat-heading">
+          All Reported Answers
+        </div>
+        <br>
+        <div class="table-responsive">
+          <table class="table ui red table">
+            <thead>
+            <tr>
+              <th>Reported User</th>
+              <th>Question</th>
+              <th>Reported Date</th>
+              <th>Reported Reason</th>
+              <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let reportedAnswer of reportedAnswers | paginate: { itemsPerPage: 5, currentPage: p }"
+                (click)="selectReportedAnswer(reportedAnswer)" style="max-height: 30px; cursor: pointer">
+              <td class="text-center">
+                <img class="tblImageColumn" [src]="reportedAnswer.userProfileImageUrl"/>
+                <br>
+                <br>
+                <a class="text-center" style="cursor: pointer">{{reportedAnswer.userName}}</a>
+              </td>
+              <td>
+                <div id="question">
+                  <div id="title">
+                    <h4 class="text-center">{{reportedAnswer.question}}</h4>
+                  </div>
+                  <br>
+                  <div id="body" *ngIf="!edit">
+                    {{reportedAnswer.answer}}
+                  </div>
+                  <div class="form-group details-area" *ngIf="edit">
+                    <label for="txtAnswer" class="required"><h6>Question Details :</h6>
+                    </label>
+                    <textarea name="txtAnswer" id="txtAnswer" class="form-control the-textarea"
+                              placeholder="Enter your question details here ..."
+                              [(ngModel)]="reportedAnswer.answer"
+                              aria-required="true" cols="100" rows="8" style="width: 100%"></textarea>
+                    <div class="clearfix"></div>
+                  </div>
+                  <br>
+                  <div class="text-center" style="font-weight: bold">
+                    <a href="" (click)="passQuestion(reportedAnswer.questionID)"><< Visit Answer >></a>
+                  </div>
+
+                </div>
+              </td>
+              <td>{{reportedAnswer.date}}</td>
+              <td>{{reportedAnswer.reason}}</td>
+              <td>
+                <button class="ui labeled yellow icon button" style="height: 35px;font-size: 14px"
+                        (click)="ignoreAnswer(reportedAnswer.id,reportedAnswer.answerID)" *ngIf="!edit">
+                  <i class="eject icon"></i>
+                  Ignore&nbsp;&nbsp;&nbsp;
+                </button>
+                <br *ngIf="!edit">
+                <br *ngIf="!edit">
+                <button class="ui labeled green icon button" style="height: 35px;font-size: 14px"
+                        (click)="checkEditStatus()" *ngIf="!edit">
+                  <i class="edit icon"></i>
+                  Edit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </button>
+                <br *ngIf="!edit">
+                <br *ngIf="!edit">
+                <button class="ui labeled red icon button" style="height: 35px;font-size: 14px"
+                        (click)="removeAnswer(reportedAnswer.id,reportedAnswer.answerID)" *ngIf="!edit">
+                  <i class="trash alternate icon"></i>
+                  Remove
+                </button>
+                <button class="ui labeled green icon button" style="height: 35px;font-size: 14px"
+                        (click)="editAnswer(reportedAnswer.id, reportedAnswer.answerID, reportedAnswer.answer)"
+                        *ngIf="edit">
+                  <i class="check circle icon"></i>
+                  Confirm
+                </button>
+                <br *ngIf="edit">
+                <br *ngIf="edit">
+                <button class="ui labeled red icon button" style="height: 35px;font-size: 14px"
+                        (click)="checkEditStatus()" *ngIf="edit">
+                  <i class="calendar times icon"></i>
+                  Cancel&nbsp;&nbsp;&nbsp;
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="12">
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+
+</div>

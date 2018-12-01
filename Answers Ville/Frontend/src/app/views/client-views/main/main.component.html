@@ -1,0 +1,797 @@
+<div
+  class="home page-template page-template-template-home page-template-template-home-php page page-id-16 active-lightbox wrap-user-not-login main-div">
+  <div class="background-cover"></div>
+  <div class="panel-pop" id="signup">
+    <h2 class="text-center">Register Now
+      <i class="icon-remove" id="close"></i>
+    </h2>
+    <div class="form-style form-style-3">
+      <form class="signup_form ask_form" #frmRegister="ngForm" (ngSubmit)="passUser()">
+        <p></p>
+        <div class="ask_error"></div>
+        <div class="form-inputs clearfix">
+          <!--<div class="col-md-6">-->
+          <p class="form-group">
+            <label for="txtName" class="required">Username
+              <span>*</span>
+            </label>
+            <input type="text" class="form-control required-item" name="txtName" id="txtName"
+                   [(ngModel)]="user.name" placeholder="Enter your usrname here ...">
+          </p>
+          <p class="form-group">
+            <label for="txtDisplayName" class="required">Display Name
+              <span>*</span>
+            </label>
+            <input type="text" class="form-control required-item" name="txtDisplayName" id="txtDisplayName"
+                   [(ngModel)]="user.displayName" placeholder="Enter the name you want to display in this site ...">
+          </p>
+          <p class="form-group">
+            <label for="txtEmail" class="required">E-Mail
+              <span>*</span>
+            </label>
+            <input type="email" class="form-control required-item" name="txtEmail" id="txtEmail"
+                   [(ngModel)]="user.email" placeholder="Enter your email here ...">
+          </p>
+        </div>
+        <p class="form-submit">
+          <input type="submit" name="register" value="Signup" class="button color small submit">
+        </p>
+      </form>
+    </div>
+  </div>
+  <div class="panel-pop" id="login-comments">
+    <h2>Login
+      <i class="icon-remove"></i>
+    </h2>
+    <div class="form-style form-style-3">
+      <div class="ask_form inputs">
+        <form class="login-form ask_login" #frmLogin="ngForm" (ngSubmit)="authenticateUser()">
+          <div class="ask_error"></div>
+          <div class="form-inputs clearfix">
+            <p class="login-text form-group">
+              <input class="required-item" type="text" placeholder="Username" name="txtUserName" id="txtUserName"
+                     [(ngModel)]="checkUser.name">
+              <i class="icon-user"></i>
+            </p>
+            <p class="login-password">
+              <input class="required-item" type="password" placeholder="Password" name="txtUserPassword"
+                     id="txtUserPassword" [(ngModel)]="checkUser.password">
+              <i class="icon-lock"></i>
+              <a href="#">Forget</a>
+            </p>
+          </div>
+          <p class="form-submit login-submit">
+            <span class="loader_2"></span>
+            <input type="submit" value="Log in" class="button color small login-submit submit sidebar_submit">
+          </p>
+          <div class="rememberme">
+            <label>
+              <input type="checkbox" input name="rememberme" checked="checked"> Remember Me</label>
+          </div>
+          <div class="errorlogin"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="panel-pop" id="lost-password">
+    <h2>Lost Password
+      <i class="icon-remove"></i>
+    </h2>
+    <div class="form-style form-style-3">
+      <p>Lost your password? Please enter your email address. You will receive a link and will create a new password via
+        email.
+      </p>
+      <form method="post" class="ask-lost-password ask_form" action="#">
+        <div class="ask_error"></div>
+        <div class="form-inputs clearfix">
+          <p>
+            <label for="user_mail_643" class="required">E-Mail
+              <span>*</span>
+            </label>
+            <input type="email" class="required-item" name="user_mail" id="user_mail_643">
+          </p>
+        </div>
+        <p class="form-submit">
+          <input type="submit" value="Reset" class="button color small submit">
+          <input type="hidden" name="form_type" value="ask-forget">
+        </p>
+      </form>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <aside class="mobile-aside mobile-menu-wrap mobile-login-wrap dark-mobile-menu panel_dark">
+    <div class="mobile-aside-inner">
+      <div class="mobile-aside-inner-inner">
+        <a href="#" class="mobile-aside-close">x</a>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="page-content">
+              <h2>Login</h2>
+              <div class="form-style form-style-3">
+                <div class="ask_form inputs">
+                  <form class="login-form ask_login" #frmLogin="ngForm" (ngSubmit)="authenticateUser()">
+                    <div class="ask_error"></div>
+                    <div class="form-inputs clearfix">
+                      <p class="login-text form-group">
+                        <input class="required-item" type="text" placeholder="Username" name="txtUserName"
+                               [(ngModel)]="checkUser.name">
+                        <i class="icon-user"></i>
+                      </p>
+                      <p class="login-password">
+                        <input class="required-item" type="password" placeholder="Password" name="txtUserPassword"
+                               [(ngModel)]="checkUser.password">
+                        <i class="icon-lock"></i>
+                        <a href="#">Forget</a>
+                      </p>
+                    </div>
+                    <p class="form-submit login-submit">
+                      <span class="loader_2"></span>
+                      <input type="submit" value="Log in" class="button color small login-submit submit sidebar_submit">
+                    </p>
+                    <div class="rememberme">
+                      <label>
+                        <input type="checkbox" input name="rememberme" checked="checked"> Remember Me</label>
+                    </div>
+                    <div class="errorlogin"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="page-content Register">
+              <h2>Register Now</h2>
+              <p>Everyday, developers come to ANSWERS ville to learn, share their knowledge, and build their
+                careers.
+              </p>
+              <div class="button color small signup">Create an account</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <aside class="mobile-aside mobile-menu-wrap aside-no-cart dark-mobile-menu">
+    <div class="mobile-aside-inner">
+      <div class="mobile-aside-inner-inner">
+        <a href="#" class="mobile-aside-close">x</a>
+        <div class="mobile-menu-top mobile-aside-menu">
+          <div class="header-top">
+            <ul id="menu-top-bar" class="menu_aside">
+              <li id="menu-item-61" *ngIf="!logged && !loggedAsAdmin" id="login-header-2"
+                  class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61 login-panel-link">
+                <a class="" style="cursor: pointer">
+                  <i class="icon-user"></i>Login Area</a>
+              </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-637" *ngIf="logged">
+                <a class="" routerLink="/main/user-profile" style="cursor: pointer">
+                  <i class="icon-pencil"></i>Account Area</a>
+              </li>
+              <li id="menu-item-637" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-637">
+                <a class="" (click)="addPost()" style="cursor: pointer">
+                  <i class="icon-pencil"></i>Add Question</a>
+              </li>
+              <li id="menu-item-1072" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1072">
+                <a class="" style="cursor: pointer" routerLink="/main/badges-and-points">
+                  <i class="fa fa-trophy"></i> Badges</a>
+              </li>
+              <li id="menu-item-260" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-260">
+                <a class="" style="cursor: pointer" routerLink="/main/tags">
+                  <i class="icon-shopping-cart"></i> Tags</a>
+              </li>
+
+              <li id="menu-item-26" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-260
+                                           animated infinite heartBeat delay-2s" *ngIf="loggedAsAdmin">
+                <a class="" style="cursor: pointer" routerLink="/admin-main/admin-dashboard">
+                  <i class="icon-dashboard"></i> Switch To Admin Dashboard</a>
+              </li>
+              <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-260" *ngIf="logged">
+                <a class="" (click)="logout()" style="cursor: pointer">
+                  <i class="icon-shopping-cart"></i> Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="ask-question-menu">
+          <a style="cursor: pointer" (click)="addPost()" class="color button small margin_0">Ask a Question</a>
+        </div>
+        <div class="post-search">
+          <form role="search" method="get" class="searchform" action="https://2code.info/demo/themes/ask-me/search/">
+            <div class="row">
+              <div class="col-md-8">
+                <div class="mobile-search-result">
+                  <input class='live-search' autocomplete='off' type="search" name="search" value="Hit enter to search"
+                         onfocus="if(this.value=='Hit enter to search')this.value='';"
+                         onblur="if(this.value=='')this.value='Hit enter to search';">
+                  <input type="hidden" name="page_id" value="2199">
+                  <input type="hidden" name="search_type" value="questions">
+                  <div class="loader_2 search_loader"></div>
+                  <div class="search-results results-empty"></div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <input type="submit" class="button-default" value="Search">
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="mobile-menu-left mobile-aside-menu">
+          <div class="header-menu">
+            <ul id="menu-header-menu" class="menu_aside">
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71
+                         animated infinite heartBeat delay-2s" *ngIf="loggedUser.points>=2000">
+                <a class="" href="" routerLink="/main/register-as-admin">Register As Admin</a>
+              </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71">
+                <a class="" href="" routerLink="/main/home">Home</a>
+              </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71">
+                <a class="" href="" routerLink="/main/public-chat" target="_blank">Public Chat</a>
+              </li>
+              <li id="menu-item-71" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71">
+                <a class="" (click)="addPost()" style="cursor: pointer">Ask Question</a>
+              </li>
+              <li id="menu-item-103"
+                  class="menu-item menu-item-type-taxonomy menu-item-object-question-category menu-item-has-children menu-item-103">
+                <a class="" style="cursor: pointer">Questions</a>
+                <ul class="sub-menu">
+                  <li id="menu-item-104"
+                      class="menu-item menu-item-type-taxonomy menu-item-object-question-category menu-item-104">
+                    <a class="" style="cursor: pointer">Questions Category</a>
+                  </li>
+                  <li id="menu-item-173"
+                      class="menu-item menu-item-type-taxonomy menu-item-object-question-category menu-item-173">
+                    <a class="" style="cursor: pointer">Custom category</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71">
+                <a class="" href="" routerLink="/main/users">Users</a>
+              </li>
+              <!--<li id="menu-item-73"-->
+              <!--class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-73">-->
+              <!--<a class="" style="cursor: pointer">User</a>-->
+              <!--<ul class="sub-menu">-->
+              <!--<li id="menu-item-74" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74">-->
+              <!--<a class="" style="cursor: pointer">User Questions</a>-->
+              <!--</li>-->
+              <!--<li id="menu-item-75" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75">-->
+              <!--<a class="" style="cursor: pointer">User Answer</a>-->
+              <!--</li>-->
+              <!--<li id="menu-item-76" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76">-->
+              <!--<a class="" style="cursor: pointer">User Favorite Questions</a>-->
+              <!--</li>-->
+              <!--<li id="menu-item-77" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-77">-->
+              <!--<a class="" style="cursor: pointer">User Points</a>-->
+              <!--</li>-->
+              <!--<li id="menu-item-198" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-198">-->
+              <!--<a class="" style="cursor: pointer">Authors I Follow</a>-->
+              <!--</li>-->
+              <!--<li id="menu-item-199" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-199">-->
+              <!--<a class="" style="cursor: pointer">Followers</a>-->
+              <!--</li>-->
+              <!--<li id="menu-item-197" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-197">-->
+              <!--<a class="" style="cursor: pointer">Follow question</a>-->
+              <!--</li>-->
+              <!--<li id="menu-item-203" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-203">-->
+              <!--<a class="" style="cursor: pointer">Follow answer</a>-->
+              <!--</li>-->
+              <!--<li id="menu-item-78" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-78">-->
+              <!--<a class="" style="cursor: pointer">User Posts</a>-->
+              <!--</li>-->
+              <!--<li id="menu-item-79" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">-->
+              <!--<a class="" style="cursor: pointer">Edit Profile</a>-->
+              <!--</li>-->
+              <!--</ul>-->
+              <!--</li>-->
+
+              <li id="menu-item-121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121">
+                <a class="" style="cursor: pointer">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="social_icons f_right">
+          <ul>
+            <li class="twitter">
+              <a target="_blank" original-title="Twitter" class="tooltip-n" href="#">
+                <i class="social_icon-twitter font17"></i>
+              </a>
+            </li>
+            <li class="facebook">
+              <a target="_blank" original-title="Facebook" class="tooltip-n" href="#">
+                <i class="social_icon-facebook font17"></i>
+              </a>
+            </li>
+            <li class="gplus">
+              <a target="_blank" original-title="Google plus" class="tooltip-n" href="#">
+                <i class="social_icon-gplus font17"></i>
+              </a>
+            </li>
+            <li class="youtube">
+              <a target="_blank" original-title="Youtube" class="tooltip-n" href="#">
+                <i class="social_icon-youtube font17"></i>
+              </a>
+            </li>
+            <li class="skype">
+              <a target="_blank" original-title="Skype" class="tooltip-n" href="skype:#?call">
+                <i class="social_icon-skype font17"></i>
+              </a>
+            </li>
+            <li class="flickr">
+              <a target="_blank" original-title="Flickr" class="tooltip-n" href="#">
+                <i class="social_icon-flickr font17"></i>
+              </a>
+            </li>
+            <li class="instagram">
+              <a target="_blank" original-title="Instagram" class="tooltip-n" href="#">
+                <i class="social_icon-instagram font17"></i>
+              </a>
+            </li>
+            <li class="linkedin">
+              <a target="_blank" original-title="Linkedin" class="tooltip-n" href="#">
+                <i class="social_icon-linkedin font17"></i>
+              </a>
+            </li>
+            <li class="rss">
+              <a original-title="Rss" class="tooltip-n" href="feed/index.html">
+                <i class="social_icon-rss font17"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div id="wrap" class="grid_1200 ">
+    <div class="login-panel panel_dark">
+      <section class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="page-content">
+              <h2>Login</h2>
+              <div class="form-style form-style-3">
+                <div class="ask_form inputs">
+                  <form class="login-form ask_login" #frmLogin="ngForm" (ngSubmit)="authenticateUser()">
+                    <div class="ask_error"></div>
+                    <div class="form-inputs clearfix">
+                      <p class="login-text form-group">
+                        <input class="required-item" type="text" placeholder="Username" name="txtUserName"
+                               [(ngModel)]="checkUser.name">
+                        <i class="icon-user"></i>
+                      </p>
+                      <p class="login-password">
+                        <input class="required-item" type="password" placeholder="Password" name="txtUserPassword"
+                               [(ngModel)]="checkUser.password">
+                        <i class="icon-lock"></i>
+                        <a href="#">Forget</a>
+                      </p>
+                    </div>
+                    <p class="form-submit login-submit">
+                      <span class="loader_2"></span>
+                      <input type="submit" value="Log in" class="button color small login-submit submit sidebar_submit">
+                    </p>
+                    <div class="rememberme">
+                      <label>
+                        <input type="checkbox" input name="rememberme" checked="checked"> Remember Me</label>
+                    </div>
+                    <div class="errorlogin"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="page-content Register">
+              <h2>Register Now</h2>
+              <p>Everyday, developers come to ANSWERS ville to learn, share their knowledge, and build their
+                careers.
+              </p>
+              <div class="button color small signup">Create an account</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div id="header-top">
+      <section class="container clearfix">
+        <div class="row">
+          <div class="col-md-6">
+            <nav class="header-top-nav">
+              <div class="header-top">
+                <ul id="menu-top-bar-1" class="">
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61 login-panel-link"
+                      *ngIf="!logged && !loggedAsAdmin" id="login-header-1">
+                    <a class="" style="cursor: pointer">
+                      <i class="icon-user"></i>Login Area</a>
+                  </li>
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-637" *ngIf="logged">
+                    <a class="" style="cursor: pointer" routerLink="/main/user-profile">
+                      <i class="icon-pencil"></i>Account Area</a>
+                  </li>
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-637">
+                    <a class="" (click)="addPost()" style="cursor: pointer">
+                      <i class="icon-pencil"></i>Add Question</a>
+                  </li>
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1072">
+                    <a class="" style="cursor: pointer" routerLink="/main/badges-and-points">
+                      <i class="fa fa-trophy"></i> Badges</a>
+                  </li>
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-260">
+                    <a class="" style="cursor: pointer" routerLink="/main/tags">
+                      <i class="icon-shopping-cart"></i> Tags</a>
+                  </li>
+
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-260
+                             animated infinite heartBeat delay-2s">
+                    <a class="" style="cursor: pointer" routerLink="/admin-main/admin-dashboard" *ngIf="loggedAsAdmin">
+                      <i class="icon-dashboard"></i> Switch To Admin Dashboard</a>
+                  </li>
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-260" *ngIf="logged">
+                    <a class="" (click)="logout()" style="cursor: pointer">
+                      <i class="icon-shopping-cart"></i> Logout</a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+            <div class="f_left language_selector"></div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="col-md-6">
+            <div class="social_icons f_right">
+              <ul>
+                <li class="twitter"><a target="_blank" original-title="Twitter" class="tooltip-n" href="#"><i
+                  class="social_icon-twitter font17"></i></a></li>
+                <li class="facebook"><a target="_blank" original-title="Facebook" class="tooltip-n" href="#"><i
+                  class="social_icon-facebook font17"></i></a></li>
+                <li class="gplus"><a target="_blank" original-title="Google plus" class="tooltip-n" href="#"><i
+                  class="social_icon-gplus font17"></i></a></li>
+                <li class="youtube"><a target="_blank" original-title="Youtube" class="tooltip-n" href="#"><i
+                  class="social_icon-youtube font17"></i></a></li>
+                <li class="skype"><a target="_blank" original-title="Skype" class="tooltip-n" href="skype:#?call"><i
+                  class="social_icon-skype font17"></i></a></li>
+                <li class="flickr"><a target="_blank" original-title="Flickr" class="tooltip-n" href="#"><i
+                  class="social_icon-flickr font17"></i></a></li>
+                <li class="instagram"><a target="_blank" original-title="Instagram" class="tooltip-n" href="#"><i
+                  class="social_icon-instagram font17"></i></a></li>
+                <li class="linkedin"><a target="_blank" original-title="Linkedin" class="tooltip-n" href="#"><i
+                  class="social_icon-linkedin font17"></i></a></li>
+                <li class="rss"><a original-title="Rss" class="tooltip-n"
+                                   href="https://2code.info/demo/themes/ask-me/feed/"><i
+                  class="social_icon-rss font17"></i></a></li>
+              </ul>
+            </div>
+            <div class="header-search">
+              <form method="get" action="https://2code.info/demo/themes/ask-me/search/">
+                <input class='live-search header-live-search' autocomplete='off' type="text" value="Search here ..."
+                       onfocus="if(this.value=='Search here ...')this.value='';"
+                       onblur="if(this.value=='')this.value='Search here ...';" name="search">
+                <input type="hidden" name="page_id" value="2199">
+                <input type="hidden" name="search_type" value="questions">
+                <div class="search-results results-empty"></div>
+                <button type="submit" class="search-submit">
+                  <i class="fa fa-search"></i>
+                </button>
+              </form>
+            </div>
+            <div class='header-notifications'>
+              <a href="" class="notifications_control">
+                <i class="fa fa-bell"></i>
+                <span class="numofitems">0</span>
+              </a>
+              <div class="notifications-wrapper"><p class='no-notifications'>There are no notifications yet.</p></div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <header id="header" class=''>
+      <section class="container clearfix">
+        <div class="logo">
+          <a class="logo-img" href="" routerLink="/main/home" itemprop="url" title="Ask me">
+            <img width="146" height="57" class="default_logo" itemprop="logo" alt="Ask me"
+                 src="../../../../assets/img/main/logo.png">
+            <img width="146" height="57" class="retina_logo" itemprop="logo" alt="Ask me"
+                 src="../../../../assets/img/main/logo_light-2x.png"> </a>
+          <meta itemprop="name" content="Ask me">
+        </div>
+        <nav class="navigation">
+          <div class="header-menu">
+            <ul id="menu-header-menu-1" class="">
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71
+                         animated infinite heartBeat delay-2s" *ngIf="loggedUser.points>=2000">
+                <a class="" href="" routerLink="/main/register-as-admin">Register As Admin</a>
+              </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71">
+                <a class="" href="" routerLink="/main/home">Home</a>
+              </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71">
+                <a class="" href="" routerLink="/main/public-chat" target="_blank">Public Chat</a>
+              </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71">
+                <a class="" (click)="addPost()" style="cursor: pointer">Ask Question</a>
+              </li>
+              <li
+                class="menu-item menu-item-type-taxonomy menu-item-object-question-category menu-item-has-children menu-item-103">
+                <a class="" style="cursor: pointer">Questions</a>
+                <ul class="sub-menu">
+                  <li class="menu-item menu-item-type-taxonomy menu-item-object-question-category menu-item-104">
+                    <a class="" routerLink="/main/home" style="cursor: pointer">Comman Questions</a>
+                  </li>
+                  <li class="menu-item menu-item-type-taxonomy menu-item-object-question-category menu-item-104">
+                    <a class="" routerLink="/main/recent-questions" style="cursor: pointer">Recent Questions</a>
+                  </li>
+                  <li class="menu-item menu-item-type-taxonomy menu-item-object-question-category menu-item-104">
+                    <a class="" routerLink="/main/mostly-viewed-questions" style="cursor: pointer">Mostly Viewed
+                      Questions</a>
+                  </li>
+                  <li class="menu-item menu-item-type-taxonomy menu-item-object-question-category menu-item-104">
+                    <a class="" routerLink="/main/mostly-voted-questions" style="cursor: pointer">Mostly Voted
+                      Questions</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-71">
+                <a class="" href="" routerLink="/main/users">Users</a>
+              </li>
+              <!--<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-73">-->
+              <!--<a class="" style="cursor: pointer">User</a>-->
+              <!--<ul class="sub-menu">-->
+              <!--<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-74">-->
+              <!--<a class="" style="cursor: pointer">User Questions</a>-->
+              <!--</li>-->
+              <!--<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75">-->
+              <!--<a class="" style="cursor: pointer">User Answer</a>-->
+              <!--</li>-->
+              <!--<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76">-->
+              <!--<a class="" style="cursor: pointer">User Favorite Questions</a>-->
+              <!--</li>-->
+              <!--<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-77">-->
+              <!--<a class="" style="cursor: pointer">User Points</a>-->
+              <!--</li>-->
+              <!--<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-198">-->
+              <!--<a class="" style="cursor: pointer">Authors I Follow</a>-->
+              <!--</li>-->
+              <!--<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-199">-->
+              <!--<a class="" style="cursor: pointer">Followers</a>-->
+              <!--</li>-->
+              <!--<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-197">-->
+              <!--<a class="" style="cursor: pointer">Follow question</a>-->
+              <!--</li>-->
+              <!--<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-203">-->
+              <!--<a class="" style="cursor: pointer">Follow answer</a>-->
+              <!--</li>-->
+              <!--<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-78">-->
+              <!--<a class="" style="cursor: pointer">User Posts</a>-->
+              <!--</li>-->
+              <!--<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-79">-->
+              <!--<a class="" style="cursor: pointer">Edit Profile</a>-->
+              <!--</li>-->
+              <!--</ul>-->
+              <!--</li>-->
+
+              <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121">
+                <a class="" style="cursor: pointer">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+        <div class="mobile-menu">
+          <div class="mobile-menu-click navigation_mobile"></div>
+        </div>
+      </section>
+    </header>
+
+    <router-outlet></router-outlet>
+
+    <footer id="footer" class="footer_dark">
+      <section class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div id="contact-widget-2" class="widget contact-widget">
+              <h3 class="widget_title">Where We Are ?</h3>
+              <div class="widget_contact">
+                <p>Answers Ville is a question and answer site for professional and enthusiast programmers.
+                  It's built and run by you as part of the Stack Exchange network of Q&A sites. With your help, we're
+                  working together to build a library of detailed answers to every question about programming.</p>
+                <ul>
+                  <li>
+                    <span>Address :</span>IJSE, Galle.
+                  </li>
+                  <li>
+                    <span>Support :</span>Support Telephone No : (+94)767015087
+                  </li>
+                  <li>Support Email Account : kushan.microsoft16@.com</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div id="nav_menu-2" class="widget widget_nav_menu">
+              <h3 class="widget_title">Quick Links</h3>
+              <div class="menu-footer-widget-container">
+                <ul id="menu-footer-widget" class="menu">
+                  <li id="menu-item-134"
+                      class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-16 current_page_item menu-item-134">
+                    <a class="" style="cursor: pointer" routerLink="/main/home">Home</a>
+                  </li>
+                  <li id="menu-item-135" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-135">
+                    <a class="" href="" (click)="addPost()">Ask Question</a>
+                  </li>
+                  <li id="menu-item-136"
+                      class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-136">
+                    <a class="" style="cursor: pointer" routerLink="/main/home">Questions</a>
+                  </li>
+                  <li id="menu-item-1901"
+                      class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1901">
+                    <a class="" style="cursor: pointer" routerLink="/main/users">Users</a>
+                  </li>
+                  <li id="menu-item-141" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-141">
+                    <a class="" style="cursor: pointer" routerLink="/main/user-profile">Edit Profile</a>
+                  </li>
+                  <li id="menu-item-140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-140">
+                    <a class="" style="cursor: pointer">Contact Us</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div id="questions-widget-3" class="widget questions-widget">
+              <h3 class="widget_title">Popular Questions</h3>
+              <ul class='related-posts'>
+                <li class="related-item">
+                  <div class="questions-div">
+                    <h3>
+                      <a
+                        style="cursor: pointer"
+                        title="Why are the British confused about us calling bread rolls “biscuits” when they call bread rolls “puddings”?"
+                        rel="bookmark">Why are the British confused </a>
+                    </h3>
+                    <p>(Why I darest say, they darest not get offended when they so ...</p>
+                    <div class="clear"></div>
+                    <span>July 16, 2018</span>
+                  </div>
+                </li>
+                <li class="related-item">
+                  <div class="questions-div">
+                    <h3>
+                      <a style="cursor: pointer"
+                         title="How much do web developers earn? What is their salary?"
+                         rel="bookmark">How much do web developers </a>
+                    </h3>
+                    <p>I am thinking of pursuing web developing as a career &amp; was ...</p>
+                    <div class="clear"></div>
+                    <span>July 16, 2018</span>
+                  </div>
+                </li>
+                <li class="related-item">
+                  <div class="questions-div">
+                    <h3>
+                      <a
+                        style="cursor: pointer"
+                        title="How to handle personal stress caused by utterly incompetent and lazy co-workers?"
+                        rel="bookmark">How to handle personal stress </a>
+                    </h3>
+                    <p>I’ve worked in Software Development teams my entire career and I’ve come ...</p>
+                    <div class="clear"></div>
+                    <span>July 16, 2018</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div id="twitter_widget-2" class="widget twitter-widget">
+              <h3 class="widget_title">@Follow Me</h3>
+              <div class="widget_twitter">
+                <ul>
+                  <li class="tweet-item">
+                    <div class="tweet-text">
+                      <a target="_blank" style="cursor: pointer"
+                         class="tweet-icon"></a>
+                      <a target="_blank" class="tweet-name"
+                         style="cursor: pointer">Answers Ville</a>
+                      Woohooo!!!
+                      We Reached Level 8 on
+                      <a style="cursor: pointer" target="_blank">@envato</a> Thanks for the best Marketplace
+                      Ever, and thanks for all our customers
+                      for…
+                      <a style="cursor: pointer" rel="nofollow">https://t.co/EUFJH760Rj</a>
+                      <br>
+                      <span class="tweet-time">about 1 week ago</span>
+                    </div>
+                  </li>
+                  <li class="tweet-item">
+                    <div class="tweet-text">
+                      <a target="_blank" style="cursor: pointer"
+                         class="tweet-icon"></a>
+                      <a target="_blank" class="tweet-name"
+                         style="cursor: pointer">Answers Ville</a>
+                      <a style="cursor: pointer" target="_blank">@Th3Andrei</a> Sorry but all the support
+                      at the themeforest comment, Please add
+                      your question at themeforest item comment.
+                      <br>
+                      <span class="tweet-time">about 3 weeks ago</span>
+                    </div>
+                  </li>
+                  <li class="tweet-item">
+                    <div class="tweet-text">
+                      <a target="_blank" style="cursor: pointer"
+                         class="tweet-icon"></a>
+                      <a target="_blank" class="tweet-name"
+                         style="cursor: pointer">Answers Ville</a>
+                      <a style="cursor: pointer">@Th3Andrei</a> Hello, please send me in my
+                      profile at themeforest :)
+                      <br>
+                      <span class="tweet-time">about 3 weeks ago</span>
+                    </div>
+                  </li>
+                </ul>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </footer>
+    <footer id="footer-bottom" class="">
+      <section class="container">
+        <div class="copyrights f_left">Copyright 2018 Ask me |
+          <a style="cursor: pointer">By Answers Ville</a>
+        </div>
+        <div class="social_icons f_right">
+          <ul>
+            <li class="twitter">
+              <a target="_blank" original-title="Twitter" class="tooltip-n" style="cursor: pointer">
+                <i class="social_icon-twitter font17"></i>
+              </a>
+            </li>
+            <li class="facebook">
+              <a target="_blank" original-title="Facebook" class="tooltip-n" style="cursor: pointer">
+                <i class="social_icon-facebook font17"></i>
+              </a>
+            </li>
+            <li class="gplus">
+              <a target="_blank" original-title="Google plus" class="tooltip-n" style="cursor: pointer">
+                <i class="social_icon-gplus font17"></i>
+              </a>
+            </li>
+            <li class="youtube">
+              <a target="_blank" original-title="Youtube" class="tooltip-n" style="cursor: pointer">
+                <i class="social_icon-youtube font17"></i>
+              </a>
+            </li>
+            <li class="skype">
+              <a target="_blank" original-title="Skype" class="tooltip-n" style="cursor: pointer">
+                <i class="social_icon-skype font17"></i>
+              </a>
+            </li>
+            <li class="flickr">
+              <a target="_blank" original-title="Flickr" class="tooltip-n" style="cursor: pointer">
+                <i class="social_icon-flickr font17"></i>
+              </a>
+            </li>
+            <li class="instagram">
+              <a target="_blank" original-title="Instagram" class="tooltip-n" style="cursor: pointer">
+                <i class="social_icon-instagram font17"></i>
+              </a>
+            </li>
+            <li class="linkedin">
+              <a target="_blank" original-title="Linkedin" class="tooltip-n" style="cursor: pointer">
+                <i class="social_icon-linkedin font17"></i>
+              </a>
+            </li>
+            <li class="rss">
+              <a original-title="Rss" class="tooltip-n" style="cursor: pointer">
+                <i class="social_icon-rss font17"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </footer>
+  </div>
+</div>

@@ -1,0 +1,196 @@
+<div style="background-color: whitesmoke">
+  <div class="section-warp top-after-header"
+       style='background-image:url(../../../../assets/img/uploads/2014/06/desk_background.png);background-repeat:no-repeat;background-attachment:fixed;background-position-x:left;background-position-y:top;-webkit-background-size: cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;'>
+    <div class="container clearfix">
+      <div class="box_icon box_warp box_no_border box_no_background">
+        <div class="row">
+          <div class="col-md-3">
+            <h2>Welcome to ANSWERS ville</h2>
+            <p>Everyday, developers come to ANSWERS ville to learn, share their knowledge, and build their careers.
+              <br>
+              Join with our developer community.</p>
+            <div class="clearfix"></div>
+            <a class="color button dark_button medium" style="cursor: pointer">About Us</a>
+            <a class="color button dark_button medium" routerLink="/main/register" href="">Join Now</a>
+          </div>
+          <div class="col-md-9">
+            <form class="form-style form-style-2" method="post"
+                  action="https://2code.info/demo/themes/ask-me/ask-question/">
+              <p>
+                <textarea name="title" rows="4" id="question_title"
+                          onfocus="if(this.value==this.defaultValue)this.value='';"
+                          onblur="if(this.value=='')this.value=this.defaultValue;">
+                  Ask a question and you will be sure to find an answer!
+                </textarea>
+                <i class="icon-pencil"></i>
+                <button class="ask-question">
+                  <span class="color button small publish-question ask-not-login">Ask Now</span>
+                </button>
+              </p>
+              <input type="hidden" name="form_type" value="empty-post">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='index-no-box'></div>
+
+
+  <section class="container main-content page-right-sidebar">
+    <div class="row">
+      <div class="with-sidebar-container">
+        <div class="main-sidebar-container col-md-9">
+          <div class="tabs-warp question-tab">
+            <ul class="tabs not-tabs">
+              <li class="tab">
+                <a routerLink="/main/home" style="cursor: pointer">Comman
+                  Questions</a>
+              </li>
+              <li class="tab">
+                <a routerLink="/main/recent-questions" style="cursor: pointer">Recent Questions</a>
+              </li>
+              <li class="tab">
+                <a routerLink="/main/mostly-viewed-questions" style="cursor: pointer">Mostly Viewed
+                  Questions</a>
+              </li>
+              <li class="tab">
+                <a class='current' routerLink="/main/mostly-voted-questions" style="cursor: pointer">Mostly Voted
+                  Questions</a>
+              </li>
+              <!--<li class="tab">-->
+              <!--<a href="index81d2.html?tabs=recent_posts" data-js="recent_posts">Recent Posts</a>-->
+              <!--</li>-->
+            </ul>
+            <div class="tab-inner-warp">
+              <div class="tab-inner">
+                <article
+                  class="question question-type-normal question_author_yes post-2492 type-question status-publish hentry question-category-language question_tags-germany"
+                  id="post-2492" itemscope itemtype="https://schema.org/Question"
+                  *ngFor="let mostlyVotedQuestion of mostlyVotedQuestions | paginate: { itemsPerPage: 10, currentPage: p }">
+                  <h2>
+                    <a (click)="passQuestion(mostlyVotedQuestion.questionID)" rel="bookmark" style="cursor: pointer">
+                      <i class="icon-pushpin tooltip-n question-sticky" original-title="Sticky"></i>
+                      <span itemprop="name">{{mostlyVotedQuestion.questionTitle}}</span>
+                    </a>
+                  </h2>
+                  <a class="question-report report_q" style="cursor: pointer" (click)="checkReportStatus()">Report</a>
+                  <div class="question-type-main">
+                    <i class="icon-question-sign"></i>Question
+                  </div>
+                  <div class="question-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                    <span itemprop="name" class="hide">{{mostlyVotedQuestion.userDisplayName}}</span>
+                    <a original-title="User" style="cursor: pointer" (click)="viewUserProfile(mostlyVotedQuestion.userName)"
+                       class="question-author-img tooltip-n">
+                      <span></span>
+                      <img itemprop='image' class='avatar avatar-65 photo'
+                           alt='{{mostlyVotedQuestion.userDisplayName}}'
+                           width='65' height='65'
+                           [src]="mostlyVotedQuestion.userprofileImageUrl">
+                    </a>
+                  </div>
+                  <div class="question-inner">
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+                      <div class='featured_image_question col-md-3'
+                           *ngFor="let questionAttchment of questionAttachments">
+                        <a style="cursor: pointer"
+                           *ngIf="mostlyVotedQuestion.questionID==questionAttchment.questionDTO.id">
+                          <img alt='{{mostlyVotedQuestion.questionTitle}}' width='300' height='200' id="myImg"
+                               [src]="questionAttchment.attachmentUrl"
+                               (click)="viewImage(questionAttchment.attachmentUrl)">
+                        </a>
+                      </div>
+                      <div id="myModal" class="modal">
+                        <span class="close" (click)="closeModelImage()">&times;</span>
+                        <img class="modal-content" id="img01" [src]="selectedImage">
+                      </div>
+                    </div>
+
+                    <div class="question-desc" style="font-size: 16px">
+                      <div itemprop="text">{{mostlyVotedQuestion.questionBody}}
+                      </div>
+                      <div class="" *ngIf="reportQuestionStatus">
+                        <br>
+                        <h3>Please briefly explain why you feel this question should be reported
+                          .
+                        </h3>
+                        <textarea name="txtReportReason" [(ngModel)]="reportedQuestion.reason"
+                                  style="width: 100%;height: 150px;margin: 20px 0;"></textarea>
+                        <div class="clearfix"></div>
+                        <div class="loader_3"></div>
+                        <div class="color button small report"
+                             (click)="reportQuestion(mostlyVotedQuestion.questionID)">
+                          Report
+                        </div>
+                        <div class="color button small dark_button cancel" (click)="checkReportStatus()">Cancel</div>
+                      </div>
+                      <div class="no_vote_more"></div>
+                    </div>
+                    <div class="share-tags">
+                      <div class="question-tags" style="margin-right: 10%">
+                        <a style="cursor: pointer" *ngFor="let questionTag of questionsTags">
+                          <span *ngIf="mostlyVotedQuestion.questionID==questionTag.questionID">
+                            <i class="icon-align-right"></i>
+                            {{questionTag.tagName}} |
+                          </span>
+                        </a>
+                      </div>
+                      <div class="share-inside">
+                        <i class="icon-tags"></i>Tags
+                      </div>
+                      <div class="clearfix"></div>
+                    </div>
+                    <hr>
+                    <div class="question-details" *ngIf="mostlyVotedQuestion.questionActive==0">
+                      <span class="question-answered"><i class="icon-ok"></i>in progress</span>
+                      <span class="question-favorite"><i class="icon-star"></i>{{mostlyVotedQuestion.questionVotesCount}}</span>
+                    </div>
+                    <div class="question-details" *ngIf="mostlyVotedQuestion.questionActive==1">
+                      <span class="question-answered"><i class="icon-ok"></i>in progress</span>
+                      <span class="question-favorite"><i class="icon-star"></i>{{mostlyVotedQuestion.questionVotesCount}}</span>
+                    </div>
+                    <span class="question-category">
+                      <i class="fa fa-folder-o"></i>
+                       <a href="question-category/analytics/index.html" rel="tag">Tag</a>
+                    </span>
+                    <span class="question-author-meta"></span>
+                    <span class="question-date" itemprop="dateCreated" datetime="July 16, 2017">
+                             <i class="fa fa-calendar"></i>{{mostlyVotedQuestion.questionCreationDate}}
+                    </span>
+                    <span class="question-comment">
+                      <a href="">
+                        <i class="fa fa-comments-o"></i>
+                      <span itemprop="answerCount">{{mostlyVotedQuestion.questionAnswersCount}}</span> Answers
+                      </a>
+                    </span>
+                    <span class="question-view">
+                        <i class="icon-eye-open"></i>{{mostlyVotedQuestion.questionViewsCount}} views</span>
+                    <span class="badge-span" style="background-color: #dd9933">{{mostlyVotedQuestion.badgeName}}</span>
+                    <div class="clearfix"></div>
+                  </div>
+                </article>
+
+                <div class="share-tags page-content">
+                  <div class="question-tags" style="margin-right: 10%">
+                    <pagination-controls (pageChange)="p = $event" style="font-size: 14px"></pagination-controls>
+                  </div>
+                  <div class="share-inside" style="font-size: 14px">
+                    <i class="icon-book"></i>Continue Reading
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-right-bar-without-profile></app-right-bar-without-profile>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </section>
+</div>
